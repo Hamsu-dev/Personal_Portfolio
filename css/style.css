@@ -456,54 +456,68 @@ header.sticky{
 	box-shadow: 2px 2px var(--main-color);
 	border: 2px solid var(--main-color);
 }
-.pricing-content{
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, auto));
-	align-items: center;
-	gap: 2rem;
-	margin-top: 5rem;
+.pricing-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    gap: 2rem;
+    margin-top: 5rem;
 }
-.card{
-	padding: 2rem;
-	background: var(--second-color);
-	border-radius: 18px;
-	transition: all .6s ease;
+
+.card {
+    padding: 2rem;
+    background: var(--second-color);
+    border-radius: 18px;
+    transition: all .6s ease;
+    height: 250px; /* Set a fixed height for the cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.card-top{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 40px;
+
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
-.card-bottom{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+
+.card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto; /* Push the bottom content to the bottom */
 }
-.card-left h4{
-	font-size: 25px;
+
+.card-left h4 {
+    font-size: 25px;
 }
-.card-left h5{
-	font-size: 20px;
-	color: var(--main-color);
-	font-family: "Caveat", cursive;
+
+.card-left h5 {
+    font-size: 20px;
+    color: var(--main-color);
+    font-family: "Caveat", cursive;
 }
-.card-left h3{
-	font-size: 28px;
-	font-weight: 700;
+
+.card-left h3 {
+    font-size: 28px;
+    font-weight: 700;
 }
-.card-left h3 span{
-	font-size: 22px;
-	font-weight: 500;
+
+.card-left h3 span {
+    font-size: 22px;
+    font-weight: 500;
 }
-.card-left a{
-	font-size: 25px;
-	color: var(--main-color);
+
+.card-left a {
+    font-size: 25px;
+    color: var(--main-color);
 }
-.card:hover{
-	background: #212121;
-	transform: translateY(-6px) scale(1.05);
-	cursor: pointer;
+
+.card:hover {
+    background: #212121;
+    transform: translateY(-6px) scale(1.05);
+    cursor: pointer;
 }
 
 .contact{
