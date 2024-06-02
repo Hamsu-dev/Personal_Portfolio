@@ -390,6 +390,34 @@ header.sticky{
     color: var(--main-color);
 }
 
+.row-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.play-btn {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-color);
+    text-transform: uppercase;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all .6s ease;
+}
+
+.play-btn i {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.play-btn:hover {
+    color: var(--main-color);
+}
+
 .skills{
 	background: var(--second-color);
 }
