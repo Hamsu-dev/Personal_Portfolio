@@ -117,34 +117,33 @@ section{
 	gap: 5rem;
 }
 
-.btn1{
+.btn1, .btn2 {
 	display: inline-block;
 	padding: 16px 38px;
-	background: var(--main-color);
-	color: var(--bg-color);
 	font-size: 17px;
 	font-weight: 500;
 	border-radius: 10px;
 	transition: all ease .55s;
 }
-.btn1:hover{
+
+.btn1 {
+	background: var(--main-color);
+	color: var(--bg-color);
+}
+
+.btn1:hover {
 	background: var(--second-color);
 	color: var(--text-color);
 }
 
-.btn2{
-	display: inline-block;
-	padding: 10px 20px;
-	background: var(--second-color);
-	color: var(--text-color);
-	font-size: 17px;
-	font-weight: 500;
-	border-radius: 10px;
-	transition: all ease .55s;
-}
-.btn2:hover{
+.btn2 {
 	background: var(--main-color);
 	color: var(--bg-color);
+}
+
+.btn2:hover {
+	background: var(--second-color);
+	color: var(--text-color);
 }
 
 .center{
