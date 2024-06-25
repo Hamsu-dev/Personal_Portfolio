@@ -88,12 +88,20 @@ header{
 section{
 	padding: 0 17%;
 }
+.hero-img {
+    position: absolute;
+    right: 5%; /* Move the image more to the right */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .hero-img img {
-    width: 300px; /* Set your desired width */
-    height: 300px; /* Set your desired height */
+    width: 250; /* Adjust the width to make it slightly smaller */
+    height: 250; /* Adjust the height to make it slightly smaller */
     object-fit: cover; /* Ensure the image covers the container without distortion */
     transition: opacity 1s ease-in-out;
 }
+
 .hero-text span{
 	color: var(--main-color);
 	font-size: 22px;
