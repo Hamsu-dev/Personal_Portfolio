@@ -143,11 +143,28 @@ section{
 	border: 1px solid var(--text-color);
 	background: transparent;
 }
-.btn2{
-	margin-left: 12px;
-	background: transparent;
-	border: 1px solid var(--text-color);
+.hero-btn a.btn2 {
+	background: purple; /* Change the background color to purple */
+	color: white; /* Change the text color to white */
+	border: 2px solid purple; /* Change the border color to purple */
+	border-radius: 16px; /* Add rounded corners */
+	padding: 13px 28px; /* Adjust padding for better size */
+	font-size: 15px; /* Adjust font size */
+	transition: all 0.3s ease; /* Add a smooth transition for hover effects */
+	margin-left: 12px; /* Ensure margin-left is consistent with original */
 }
+
+.hero-btn a.btn2:hover {
+	background: red; /* Change the background color to red on hover */
+	color: white; /* Ensure the text color stays white on hover */
+	border-color: red; /* Change the border color to red on hover */
+	transform: translateY(-5px); /* Add a slight lift on hover */
+}
+
+.hero-btn a.btn2 i {
+	margin-left: 4px; /* Ensure proper spacing for the icon */
+}
+
 .hero-text a i{
 	margin-left: 4px;
 }
