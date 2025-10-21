@@ -24,14 +24,11 @@
 
 	<!--- header --->
 	<header>
-		<a href="#" class="logo">Sam Lui</a>
+		<a href="#" class="logo">Sam Hu</a>
 
 		<ul class="navlist">
 			<li><a href="#home">Home</a></li>
-			<li><a href="#aboutMe">About Me</a></li>
 			<li><a href="#portfolio">Portfolio</a></li>
-			<li><a href="#skills">Skills</a></li>
-			<li><a href="#achievement">Achievement</a></li>
 			<li><a href="#contact">Contact</a></li>
 		</ul>
 
@@ -43,272 +40,232 @@
 
 	<!--- hero --->
 	<section class="hero" id="home">
-		<div class="hero-text">
-			<h6>Hello, <span>my name is</span></h6>
-			<h1><span>Sam</span> Lui</h1>
-			<h4>I am Game developer</h4>
-			<p>From New Zealand, Auckland. I love making games! <br> Always keen to collaborate in game jams.</p>
-			<div class="hero-icons">
-				<a href="https://github.com/Hamsu-dev" target="_blank"><i class="ri-github-line"></i></a>
-				<a href="https://www.instagram.com/s1_lui/" target="_blank"><i class="ri-instagram-line"></i></a>
-				<a href="https://www.linkedin.com/in/sam-uoa/" target="_blank"><i class="ri-linkedin-box-line"></i></a>
-				<a href="https://discord.gg/aFyvupF8MQ" target="_blank"><i class="ri-discord-line"></i></a>
+		<!-- Particle Background -->
+		<div id="particles-js"></div>
+		
+		<div class="hero-content">
+			<div class="hero-text">
+				<h6>Hello, <span>my name is</span></h6>
+				<h1><span>Sam</span> Hu</h1>
+				<h4>I am Game developer</h4>
+				<p>Making games worth playing</p>
+				<div class="hero-icons">
+					<a href="https://github.com/Hamsu-dev" target="_blank"><i class="ri-github-line"></i></a>
+					<a href="https://www.instagram.com/s1_lui/" target="_blank"><i class="ri-instagram-line"></i></a>
+					<a href="https://www.linkedin.com/in/sam-uoa/" target="_blank"><i class="ri-linkedin-box-line"></i></a>
+				</div>
+
+				<div class="hero-btn">
+					<a href="Assets/Sam_Hu_Resume.docx.pdf" class="btn" download>Download CV</a>
+					<a href="https://hamsu-dev.itch.io/" target="_blank" class="btn2">Itch.Io</a>
+				</div>
 			</div>
 
-			<div class="hero-btn">
-				<a href="Assets/Sam_Hu_Resume.docx.pdf" class="btn" download>Download CV</a>
-				<a href="https://hamsu-dev.itch.io/" target="_blank" class="btn2">Itch.Io</a>
+			<div class="hero-img">
+				<img src="img/sam_hero.jpg">
 			</div>
-		</div>
-
-		<div class="hero-img">
-			<img src="img/sam_hero.jpg">
 		</div>
 
 		<div class="scroll">
-			<a href="#services"><i class="ri-scroll-to-bottom-fill"></i>Scroll Bottom</a>
+			<a href="#portfolio"><i class="ri-scroll-to-bottom-fill"></i>Scroll Bottom</a>
 		</div>
 	</section>
 
 
-	<!--- services --->
-	<section class="services" id="aboutMe">
-		<div class="mid-text">
-			<h2>About Me</h2>
-			<h5>Recent</h5>
-		</div>
-
-		<div class="services-content">
-			<div class="box">
-				<h6>CS Student</h6>
-				<h3>The University Of Auckland</h3>
-				<p>Pursuing a Bachelor of Advanced Science with a major in Computer Science</p>
-				<div class="linkk">
-					<a href="#"><i class="ri-terminal-box-line"></i></a>
-				</div>
-			</div>
-
-			<div class="box">
-				<h6>Web Development</h6>
-				<h3>HTML/CSS/JavaScript</h3>
-				<p>As a web developer by trade, I create websites for a living. I specialize in HTML, CSS, and JavaScript to build responsive and dynamic web applications. I am passionate about crafting visually appealing and user-friendly websites.</p>
-				<div class="linkk">
-					<a href="#"><i class="ri-pages-line"></i></a>
-				</div>
-				
-			</div>
-
-			<div class="box">
-				<h6>Game Development</h6>
-				<h3>Godot \ Unity \ Unreal Engine</h3>
-				<p>I found my passion in game development and have been honing my skills using engines like Godot, Unity, and Unreal Engine. I enjoy creating immersive experiences and engaging gameplay.</p>
-				<div class="linkk">
-					<a href="#"><i class="ri-gamepad-line"></i></a>
-				</div>
-			</div>
-
-		</div>
-	</section>
 
 
 	<!--- portfolio --->
 	<section class="portfolio" id="portfolio">
 		<div class="mid-text">
 			<h2>PORTFOLIO</h2>
-			<h5>My Creation</h5>
 		</div>
 
 		<div class="portfolio-content">
-			<div class="row">
-				<div class="portfolio-img">
-					<a href="https://hamsu-dev.itch.io/memento-marine" target="_blank">
-						<img src="img/Memento_Marine.jpg" alt="Memento Marine">
+			<!-- Recent Games -->
+			<div class="portfolio-section">
+				<h3 class="section-title">Recent Releases</h3>
+				<div class="games-grid">
+					<a href="https://hamsu-dev.itch.io/boss-one" target="_blank" class="portfolio-game">
+						<div class="game-card">
+							<div class="game-image">
+								<img src="img/BossOne.png" alt="Boss One Game">
+								<div class="play-overlay">
+									<i class="ri-play-circle-fill"></i>
+									<span>Play Now</span>
+								</div>
+							</div>
+							<div class="game-details">
+								<h4>Boss One</h4>
+								<p>Soul-like boss fight with multiple boss moves and challenging mechanics. A true test of skill and strategy made in Godot.</p>
+								<div class="game-tags">
+									<span class="tag">Soul-like</span>
+									<span class="tag">Boss Fight</span>
+									<span class="tag">Godot</span>
+								</div>
+								<div class="blog-content">
+									<div class="blog-post">
+										<h5>Development Journey</h5>
+										<p>Creating Boss One was a challenge in balancing difficulty with fairness. Each boss move was carefully crafted to test player skill while remaining learnable.</p>
+										<span class="blog-date">Jan 2025</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+
+					<a href="https://hamsu-dev.itch.io/sock-for-sox" target="_blank" class="portfolio-game">
+						<div class="game-card">
+							<div class="game-image">
+								<img src="img/RaccoonIcon.png" alt="Sneaky Soxs Game">
+								<div class="play-overlay">
+									<i class="ri-play-circle-fill"></i>
+									<span>Play Now</span>
+								</div>
+							</div>
+							<div class="game-details">
+								<h4>Sneaky Soxs</h4>
+								<p>Fun and challenging 2D puzzle platformer starring Sox the Raccoon on a museum heist. Navigate security systems, avoid guards, and steal the most valuable raccoon artifacts!</p>
+								<div class="game-tags">
+									<span class="tag">Puzzle</span>
+									<span class="tag">Platformer</span>
+									<span class="tag">Stealth</span>
+								</div>
+								<div class="blog-content">
+									<div class="blog-post">
+										<h5>Team Collaboration</h5>
+										<p>Working with talented artists and programmers to bring Sox's museum heist to life. The puzzle mechanics required careful balancing of challenge and fun.</p>
+										<span class="blog-date">Jan 2025</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+
+					<a href="https://hamsu-dev.itch.io/the-frog-prince" target="_blank" class="portfolio-game">
+						<div class="game-card">
+							<div class="game-image">
+								<img src="img/frogPrinceMenu.jpg" alt="The Frog Prince Game">
+								<div class="play-overlay">
+									<i class="ri-play-circle-fill"></i>
+									<span>Play Now</span>
+								</div>
+							</div>
+							<div class="game-details">
+								<h4>The Frog Prince</h4>
+								<p>Break the curse by kissing the princess! Fight through waves of knights, archers, warriors, and wardens. Earn XP to upgrade abilities and transform back into a prince.</p>
+								<div class="game-tags">
+									<span class="tag">Action</span>
+									<span class="tag">RPG</span>
+									<span class="tag">Adventure</span>
+								</div>
+								<div class="blog-content">
+									<div class="blog-post">
+										<h5>Game Jam Experience</h5>
+										<p>Developed for Godot Wild Jam #70, this project taught me rapid prototyping and team coordination under tight deadlines. The XP system was a last-minute addition that became a core feature.</p>
+										<span class="blog-date">Oct 2024</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</a>
 				</div>
-
-				<div class="p-flex">
-					<a href="#" class="flex1">GODOT</a>
-					<a href="#" class="flex2">COLLABORATION</a>
-					<a href="#" class="flex2">DEVELOPMENT</a>
-				</div>
-				<h3>Memento Marine</h3>
-				<a href="https://itch.io/embed-upload/10504239?color=111111" target="_blank" class="play-btn">
-					<i class="ri-play-circle-line"></i> Click to Play
-				</a>
 			</div>
 
-			<div class="row">
-				<div class="portfolio-img">
-					<a href="https://hamsu-dev.itch.io/last-musical-chair" target="_blank">
-						<img src="img/Last Musical Chair.png" alt="Last Musical Chair">
+			<!-- Previous Games -->
+			<div class="portfolio-section">
+				<h3 class="section-title">Previous Projects</h3>
+				<div class="games-grid">
+					<a href="https://hamsu-dev.itch.io/memento-marine" target="_blank" class="portfolio-game">
+						<div class="game-card">
+							<div class="game-image">
+								<img src="img/Memento_Marine.jpg" alt="Memento Marine">
+								<div class="play-overlay">
+									<i class="ri-play-circle-fill"></i>
+									<span>Play Now</span>
+								</div>
+							</div>
+							<div class="game-details">
+								<h4>Memento Marine</h4>
+								<p>Narrative-driven game with design excellence award from UOA GDG. A collaborative project showcasing storytelling in games.</p>
+								<div class="game-tags">
+									<span class="tag">Narrative</span>
+									<span class="tag">Award Winner</span>
+									<span class="tag">Collaboration</span>
+								</div>
+								<div class="blog-content">
+									<div class="blog-post">
+										<h5>Award-Winning Narrative</h5>
+										<p>This project won the Narrative & Design Excellence award at UOA GDG. The collaborative process taught me the importance of clear communication in game development.</p>
+										<span class="blog-date">Aug 2024</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+
+					<a href="https://hamsu-dev.itch.io/last-musical-chair" target="_blank" class="portfolio-game">
+						<div class="game-card">
+							<div class="game-image">
+								<img src="img/Last Musical Chair.png" alt="Last Musical Chair">
+								<div class="play-overlay">
+									<i class="ri-play-circle-fill"></i>
+									<span>Play Now</span>
+								</div>
+							</div>
+							<div class="game-details">
+								<h4>Last Musical Chair</h4>
+								<p>GameDev.tv Game Jam 2024 entry. A creative take on the classic musical chairs game with unique mechanics and engaging gameplay.</p>
+								<div class="game-tags">
+									<span class="tag">Game Jam</span>
+									<span class="tag">Creative</span>
+									<span class="tag">Godot</span>
+								</div>
+								<div class="blog-content">
+									<div class="blog-post">
+										<h5>Game Jam Learning</h5>
+										<p>Participating in GameDev.tv Game Jam 2024 taught me rapid iteration and creative problem-solving under time constraints. The theme pushed me to think outside the box.</p>
+										<span class="blog-date">Dec 2024</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+
+					<a href="https://github.com/Hamsu-dev/Game_Review_Website" target="_blank" class="portfolio-game">
+						<div class="game-card">
+							<div class="game-image">
+								<img src="img/game_review_website.png" alt="University Web App Project">
+								<div class="play-overlay">
+									<i class="ri-code-line"></i>
+									<span>View Code</span>
+								</div>
+							</div>
+							<div class="game-details">
+								<h4>Game Review Website</h4>
+								<p>University web application project built with HTML, CSS, JavaScript, and Flask. A full-stack web development project showcasing modern web technologies.</p>
+								<div class="game-tags">
+									<span class="tag">Web Development</span>
+									<span class="tag">Flask</span>
+									<span class="tag">Full-Stack</span>
+								</div>
+								<div class="blog-content">
+									<div class="blog-post">
+										<h5>Full-Stack Development</h5>
+										<p>This university project taught me full-stack web development. Building both frontend and backend components gave me a comprehensive understanding of web technologies.</p>
+										<span class="blog-date">Jul 2024</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</a>
 				</div>
-
-				<div class="p-flex">
-					<a href="#" class="flex1">GODOT</a>
-					<a href="#" class="flex2">GAME JAM</a>
-					<a href="#" class="flex2">DEVELOPMENT</a>
-				</div>
-				<h3>GameDev.tv Game Jam 2024</h3>
-				<a href="https://itch.io/embed-upload/10553537?color=333333" target="_blank" class="play-btn">
-					<i class="ri-play-circle-line"></i> Click to Play
-				</a>
 			</div>
-
-			<div class="row">
-				<div class="portfolio-img">
-					<a href="https://github.com/Hamsu-dev/Game_Review_Website" target="_blank">
-						<img src="img/game_review_website.png" alt="University Web App Project">
-					</a>
-				</div>
-
-				<div class="p-flex">
-					<a href="#" class="flex1">WEBSITE</a>
-					<a href="#" class="flex2">HTML/CSS</a>
-					<a href="#" class="flex2">JAVASCRIPT</a>
-					<a href="#" class="flex2">FLASK</a>
-				</div>
-				<h3>Univeristy Web App Project</h3>
-			</div>
-
 		</div>
 
-		<div class="portfolio-btn">
-			<a href="https://github.com/Hamsu-dev" target="_blank" class="p-btn">View all project<i class="ri-arrow-right-up-line"></i></a>
-		</div>
-	</section>
-
-	<!--- skills --->
-	<section class="skills" id="skills">
-		<div class="mid-text">
-			<h2>MY SKILLS</h2>
-			<h5>Forever Updating</h5>
-		</div>
-
-		<div class="skills-content">
-			<div class="col">
-				<img src="img/godot_2.png">
-				<h4>92%</h4>
-				<h6>GODOT</h6>
-			</div>
-
-			<div class="col">
-				<img src="img/unity1.png">
-				<h4>50%</h4>
-				<h6>Unity</h6>
-			</div>
-
-			<div class="col">
-				<img src="img/unreal.png">
-				<h4>50%</h4>
-				<h6>Unreal Engine 5</h6>
-			</div>
-
-			<div class="col">
-				<img src="img/web.png">
-				<h4>90%</h4>
-				<h6>HTML/CSS/JS</h6>
-			</div>
-
-			<div class="col">
-				<img src="img/webflow.png">
-				<h4>90%</h4>
-				<h6>Wordpress</h6>
-			</div>
-
-			<div class="col">
-				<img src="img/python.png">
-				<h4>90%</h4>
-				<h6>Python</h6>
-			</div>
-
-			<div class="col">
-				<img src="img/C++.png">
-				<h4>50%</h4>
-				<h6>C++</h6>
-			</div>
-
-			<div class="col">
-				<img src="img/CSharp.png">
-				<h4>50%</h4>
-				<h6>C#</h6>
-			</div>
-
-		</div>
 	</section>
 
 
-	<!--- pricing --->
-	<section class="pricing" id="achievement">
-		<div class="middle">
-			<div class="mid-left">
-				<h2>Achievement</h2>
-				<h5>Not much <br> filling the page lol</h5>
-			</div>
 
-			<div class="mid-right">
-				<a href="https://mail.google.com/mail/?view=cm&fs=1&to=businss.samlui@gmail.com&su=Collaboration%20Inquiry&body=Hi%20Sam,%0D%0A%0D%0AI%20would%20like%20to%20collaborate%20on%20a%20project.%0D%0A%0D%0AThank%20you!" class="mid-btn" target="_blank">Contact for collaboration</a>
-			</div>
-		</div>
-
-		<div class="pricing-content">
-			<div class="card">
-				<div class="card-top">
-					<div class="card-left">
-						<h4>Award</h4>
-					</div>
-					<div class="card-left">
-						<h5>UOA GDG</h5>
-					</div>
-				</div>
-
-				<div class="card-bottom">
-					<div class="card-left">
-						<h3>Memento Marine<br> <span>Narrative & Design Excellence</span></h3>
-					</div>
-					<div class="card-left">
-						<a href="#"><i class="ri-award-fill"></i></a>
-						<a href="#"><i class="ri-award-fill"></i></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="card-top">
-					<div class="card-left">
-						<h4>Award</h4>
-					</div>
-					<div class="card-left">
-						<h5>Coming Soon</h5>
-					</div>
-				</div>
-
-				<div class="card-bottom">
-					<div class="card-left">
-						<a href="#"><i class="ri-arrow-right-up-line"></i></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="card-top">
-					<div class="card-left">
-						<h4>Award</h4>
-					</div>
-					<div class="card-left">
-						<h5>Coming Soon</h5>
-					</div>
-				</div>
-
-				<div class="card-bottom">
-					<div class="card-left">
-						<a href="#"><i class="ri-arrow-right-up-line"></i></a>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</section>
 
 
 	<!--- contact --->
@@ -321,7 +278,6 @@
 				<a href="https://github.com/Hamsu-dev" target="_blank"><i class="ri-github-line"></i></a>
 				<a href="https://www.instagram.com/s1_lui/" target="_blank"><i class="ri-instagram-line"></i></a>
 				<a href="https://www.linkedin.com/in/sam-uoa/" target="_blank"><i class="ri-linkedin-box-line"></i></a>
-				<a href="https://discord.gg/aFyvupF8MQ" target="_blank"><i class="ri-discord-line"></i></a>
 			</div>
 		</div>
 	</section>
@@ -329,7 +285,7 @@
 	<!--- footer --->
 	<div class="footer">
 		<div class="copyright">
-			<p>Created by Sam Lui | All Rights Reserved!</p>
+			<p>Created by Sam Hu | All Rights Reserved!</p>
 		</div>
 
 		<a href="#home" class="scroll-top">
@@ -339,6 +295,7 @@
 
 
 	<script src="https://unpkg.com/scrollreveal"></script>
+	<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 	<!--- js link --->
 	<script src="js/script.js"></script>
