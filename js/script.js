@@ -65,6 +65,106 @@ images.forEach(img => {
 	}
 });
 
+// Scroll Progress Bar
+function updateScrollProgress() {
+	const scrollTop = window.pageYOffset;
+	const docHeight = document.body.scrollHeight - window.innerHeight;
+	const scrollPercent = (scrollTop / docHeight) * 100;
+	const progressBar = document.querySelector('.scroll-progress-bar');
+	
+	if (progressBar) {
+		progressBar.style.width = scrollPercent + '%';
+	}
+}
+
+// Clean Cursor Trail
+function initCursorTrail() {
+	const cursor = document.querySelector('.cursor-trail');
+	let mouseX = 0, mouseY = 0;
+	let cursorX = 0, cursorY = 0;
+	
+	document.addEventListener('mousemove', (e) => {
+		mouseX = e.clientX;
+		mouseY = e.clientY;
+		cursor.classList.add('active');
+	});
+	
+	document.addEventListener('mouseleave', () => {
+		cursor.classList.remove('active');
+	});
+	
+	function animateCursor() {
+		cursorX += (mouseX - cursorX) * 0.1;
+		cursorY += (mouseY - cursorY) * 0.1;
+		
+		cursor.style.left = cursorX - 10 + 'px';
+		cursor.style.top = cursorY - 10 + 'px';
+		
+		requestAnimationFrame(animateCursor);
+	}
+	animateCursor();
+}
+
+// Enhanced Scroll Animations
+function initScrollAnimations() {
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	};
+	
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('revealed');
+			}
+		});
+	}, observerOptions);
+	
+	// Observe elements for scroll animations
+	document.querySelectorAll('.portfolio-section, .game-card, .contact-content').forEach(el => {
+		el.classList.add('scroll-reveal');
+		observer.observe(el);
+	});
+}
+
+// Performance Optimizations
+function optimizePerformance() {
+	// Preload critical images
+	const criticalImages = [
+		'img/sam_hero.jpg',
+		'img/BossOne.png',
+		'img/RaccoonIcon.png',
+		'img/frogPrinceMenu.jpg'
+	];
+	
+	criticalImages.forEach(src => {
+		const img = new Image();
+		img.src = src;
+	});
+	
+	// Optimize scroll events
+	let ticking = false;
+	function updateOnScroll() {
+		updateScrollProgress();
+		ticking = false;
+	}
+	
+	window.addEventListener('scroll', () => {
+		if (!ticking) {
+			requestAnimationFrame(updateOnScroll);
+			ticking = true;
+		}
+	});
+}
+
+// Initialize all features
+document.addEventListener('DOMContentLoaded', () => {
+	initCursorTrail();
+	initScrollAnimations();
+	optimizePerformance();
+	updateScrollProgress();
+});
+
 // Particle Background
 if (typeof particlesJS !== 'undefined') {
 	particlesJS('particles-js', {
