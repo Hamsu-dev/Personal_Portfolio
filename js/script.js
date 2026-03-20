@@ -132,6 +132,8 @@ function optimizePerformance() {
 	// Preload critical images
 	const criticalImages = [
 		'img/sam_hero.jpg',
+		'img/FairyForest.png',
+		'img/WhitchWay.png',
 		'img/BossOne.png',
 		'img/RaccoonIcon.png',
 		'img/frogPrinceMenu.jpg'
