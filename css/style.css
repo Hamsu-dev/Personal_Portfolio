@@ -229,7 +229,7 @@ section{
 	font-family: "Caveat", cursive;
 	font-size: 35px;
 	font-weight: bold;
-	margin-bottom: 30px;
+	margin-bottom: 12px;
 }
 .hero-text p{
 	font-size: var(--p-font);
@@ -809,6 +809,79 @@ header.sticky{
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.angry-birds-card .game-image {
+    position: relative;
+}
+
+.angry-birds-card .angry-birds-main-img,
+.angry-birds-card .angry-birds-hover-gif {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.angry-birds-card .angry-birds-main-img {
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 0.35s ease;
+}
+
+.angry-birds-card .angry-birds-hover-gif {
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.35s ease;
+}
+
+.angry-birds-card:hover .angry-birds-main-img {
+    opacity: 0;
+}
+
+.angry-birds-card:hover .angry-birds-hover-gif {
+    opacity: 1;
+}
+
+.fairy-forest-card .game-image {
+    position: relative;
+}
+
+.fairy-forest-card .fairy-forest-main-img,
+.fairy-forest-card .fairy-forest-hover-gif {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fairy-forest-card .fairy-forest-main-img {
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 0.35s ease;
+}
+
+.fairy-forest-card .fairy-forest-hover-gif {
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.35s ease;
+}
+
+.fairy-forest-card:hover .fairy-forest-main-img {
+    opacity: 0;
+}
+
+.fairy-forest-card:hover .fairy-forest-hover-gif {
+    opacity: 1;
+}
+
+/* Keep overlay above GIF image layer on GIF cards */
+.angry-birds-card .play-overlay,
+.fairy-forest-card .play-overlay {
+    z-index: 5;
+    pointer-events: none;
 }
 
 .game-card::before {
