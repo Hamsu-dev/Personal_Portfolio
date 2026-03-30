@@ -2,7 +2,7 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	scroll-behavior: smooth;
+	scroll-behavior: auto;
 	text-decoration: none;
 	list-style: none;
 	font-family: "Jost", sans-serif;
@@ -29,6 +29,7 @@ img {
 	--bg-color: #1d1c1b;
 	--text-color: #fff;
 	--main-color: #ea5445;
+	--accent-color: #00d4ff;
 	--second-bg-color: #22211f;
 	--other-color: #858585;
 	--second-color: #1a1a1a;
@@ -1656,16 +1657,26 @@ header.sticky{
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 4px;
-	background: rgba(255, 255, 255, 0.1);
+	height: 5px;
+	background: rgba(255, 255, 255, 0.08);
 	z-index: 9999;
+	pointer-events: none;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 
 .scroll-progress-bar {
 	height: 100%;
-	background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+	background: var(--main-color);
 	width: 0%;
-	transition: width 0.1s ease;
+	transition: width 0.06s linear;
+	box-shadow: 0 0 14px rgba(234, 84, 69, 0.55);
+	border-radius: 0 2px 2px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.scroll-progress-bar {
+		transition: none;
+	}
 }
 
 /* Konami code hint (fixed foot of viewport) */
@@ -1711,42 +1722,61 @@ header.sticky{
 	}
 }
 
-/* Hide Default Cursor */
-* {
-	cursor: none !important;
+/* Custom cursor hidden: only when fine pointer and motion ok (a11y keeps default cursor) */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+	* {
+		cursor: none !important;
+	}
 }
 
 /* Cursor Trail */
 .cursor-trail {
 	position: fixed;
-	width: 20px;
-	height: 20px;
-	background: radial-gradient(circle, var(--main-color) 0%, transparent 70%);
+	width: 22px;
+	height: 22px;
+	margin: -11px 0 0 -11px;
+	left: 0;
+	top: 0;
+	background: radial-gradient(circle, var(--main-color) 0%, transparent 72%);
 	border-radius: 50%;
 	pointer-events: none;
 	z-index: 9998;
 	opacity: 0;
-	transition: opacity 0.3s ease;
+	transition: opacity 0.28s ease;
 	box-shadow: 0 0 25px var(--main-color), 0 0 50px rgba(234, 84, 69, 0.4);
 	animation: cursorPulse 2s ease-in-out infinite;
+	will-change: transform, left, top;
 }
 
 .cursor-trail.active {
-	opacity: 0.9;
-	transform: scale(1.2);
-	box-shadow: 0 0 35px var(--main-color), 0 0 70px rgba(234, 84, 69, 0.6);
+	opacity: 0.92;
+}
+
+.cursor-trail.is-pressed {
+	opacity: 1;
+	filter: brightness(1.15);
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+	.cursor-trail {
+		display: none !important;
+	}
 }
 
 
 /* Cursor Animations */
 @keyframes cursorPulse {
 	0%, 100% {
-		transform: scale(1);
 		box-shadow: 0 0 25px var(--main-color), 0 0 50px rgba(234, 84, 69, 0.4);
 	}
 	50% {
-		transform: scale(1.1);
-		box-shadow: 0 0 35px var(--main-color), 0 0 70px rgba(234, 84, 69, 0.6);
+		box-shadow: 0 0 34px var(--main-color), 0 0 68px rgba(234, 84, 69, 0.55);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cursor-trail {
+		animation: none;
 	}
 }
 
@@ -1754,8 +1784,9 @@ header.sticky{
 /* Enhanced Scroll Animations */
 .scroll-reveal {
 	opacity: 0;
-	transform: translateY(50px);
-	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	transform: translateY(36px);
+	transition: opacity 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+		transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scroll-reveal.revealed {

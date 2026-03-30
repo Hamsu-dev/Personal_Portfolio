@@ -31,11 +31,11 @@ window.onscroll = () => {
 // Optimized ScrollReveal with reduced motion support
 if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
 	ScrollReveal({
-		distance: '80px',
-		duration: 2000,
-		delay: 200,
+		distance: '48px',
+		duration: 720,
+		delay: 60,
 		useDelay: 'always',
-		viewFactor: 0.2,
+		viewFactor: 0.15,
 		cleanup: true
 	});
 
@@ -67,39 +67,45 @@ images.forEach(img => {
 
 // Scroll Progress Bar
 function updateScrollProgress() {
-	const scrollTop = window.pageYOffset;
-	const docHeight = document.body.scrollHeight - window.innerHeight;
-	const scrollPercent = (scrollTop / docHeight) * 100;
+	const scrollTop = window.scrollY || window.pageYOffset;
+	const docHeight = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
 	const progressBar = document.querySelector('.scroll-progress-bar');
-	
-	if (progressBar) {
-		progressBar.style.width = scrollPercent + '%';
-	}
+	if (!progressBar) return;
+	const scrollPercent = docHeight <= 0 ? 0 : Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+	progressBar.style.width = scrollPercent + '%';
 }
 
-// Clean Cursor Trail
+// Cursor trail (fine mouse only; hidden on touch / reduced motion via CSS)
 function initCursorTrail() {
 	const cursor = document.querySelector('.cursor-trail');
-	let mouseX = 0, mouseY = 0;
-	let cursorX = 0, cursorY = 0;
-	
+	if (!cursor) return;
+	if (window.matchMedia('(pointer: coarse)').matches) return;
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+	let mouseX = 0;
+	let mouseY = 0;
+	let cursorX = 0;
+	let cursorY = 0;
+	const ease = 0.14;
+
 	document.addEventListener('mousemove', (e) => {
 		mouseX = e.clientX;
 		mouseY = e.clientY;
 		cursor.classList.add('active');
 	});
-	
+
 	document.addEventListener('mouseleave', () => {
 		cursor.classList.remove('active');
 	});
-	
+
+	document.addEventListener('mousedown', () => cursor.classList.add('is-pressed'));
+	window.addEventListener('mouseup', () => cursor.classList.remove('is-pressed'));
+
 	function animateCursor() {
-		cursorX += (mouseX - cursorX) * 0.1;
-		cursorY += (mouseY - cursorY) * 0.1;
-		
-		cursor.style.left = cursorX - 10 + 'px';
-		cursor.style.top = cursorY - 10 + 'px';
-		
+		cursorX += (mouseX - cursorX) * ease;
+		cursorY += (mouseY - cursorY) * ease;
+		cursor.style.left = cursorX + 'px';
+		cursor.style.top = cursorY + 'px';
 		requestAnimationFrame(animateCursor);
 	}
 	animateCursor();
