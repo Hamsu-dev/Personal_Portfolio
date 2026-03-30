@@ -159,10 +159,78 @@ function optimizePerformance() {
 	});
 }
 
+// Hover "decode" scramble on headings (respects reduced motion)
+function initTextScrambleHover() {
+	if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+	const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&";
+
+	function lockHeaderLogoWidth(el, finalText) {
+		el.style.display = "inline-block";
+		el.style.flexShrink = "0";
+		const saved = el.textContent;
+		let maxW = 0;
+		const len = finalText.length;
+		for (let k = 0; k < 40; k++) {
+			let s = "";
+			for (let i = 0; i < len; i++) {
+				const c = finalText[i];
+				s += c === " " || c === "\n" ? c : glyphs[(Math.random() * glyphs.length) | 0];
+			}
+			el.textContent = s;
+			maxW = Math.max(maxW, el.getBoundingClientRect().width);
+		}
+		el.textContent = saved;
+		el.style.minWidth = Math.ceil(maxW + 6) + "px";
+	}
+
+	const nodes = document.querySelectorAll("header .logo");
+	nodes.forEach((el) => {
+		if (el.dataset.scrambleBound === "1") return;
+		el.dataset.scrambleBound = "1";
+		const finalText = el.textContent.replace(/\s+/g, " ").trim();
+		el.dataset.scrambleText = finalText;
+		lockHeaderLogoWidth(el, finalText);
+		let timerId = null;
+		el.addEventListener(
+			"mouseenter",
+			() => {
+				if (timerId) clearInterval(timerId);
+				const text = el.dataset.scrambleText;
+				const len = text.length;
+				let frame = 0;
+				const maxFrames = 14;
+				timerId = setInterval(() => {
+					frame++;
+					if (frame >= maxFrames) {
+						clearInterval(timerId);
+						timerId = null;
+						el.textContent = text;
+						return;
+					}
+					let out = "";
+					for (let i = 0; i < len; i++) {
+						const c = text[i];
+						if (c === " " || c === "\n") {
+							out += c;
+							continue;
+						}
+						const settle = frame / maxFrames;
+						if (i / len < settle) out += c;
+						else out += glyphs[(Math.random() * glyphs.length) | 0];
+					}
+					el.textContent = out;
+				}, 32);
+			},
+			{ passive: true }
+		);
+	});
+}
+
 // Initialize all features
 document.addEventListener('DOMContentLoaded', () => {
 	initCursorTrail();
 	initScrollAnimations();
+	initTextScrambleHover();
 	optimizePerformance();
 	updateScrollProgress();
 });
