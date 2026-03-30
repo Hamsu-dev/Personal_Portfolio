@@ -796,6 +796,10 @@ header.sticky{
     color: inherit;
 }
 
+.portfolio-game:not(a) .game-card {
+    cursor: default;
+}
+
 .game-card {
     background: var(--bg-color);
     border-radius: 20px;
