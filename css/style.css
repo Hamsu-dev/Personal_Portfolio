@@ -881,11 +881,17 @@ header.sticky{
     opacity: 1;
 }
 
-/* Keep overlay above GIF image layer on GIF cards */
+/* Keep overlay above image layers; pointer-events none so <a> receives clicks */
+.game-image .play-overlay,
 .angry-birds-card .play-overlay,
 .fairy-forest-card .play-overlay {
     z-index: 5;
     pointer-events: none;
+}
+
+/* On hover, image row stacks above game-details so Play Now stays visible over blog panel */
+.game-card:hover .game-image {
+    z-index: 11;
 }
 
 .game-card::before {
