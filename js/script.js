@@ -4143,7 +4143,7 @@ function initProjectLevel(levelEl) {
 
 				${cfg.video
 
-					? `<video class="proj-hero" poster="${cfg.hero}" muted playsinline preload="none" data-src="${cfg.video}"></video><span class="proj-media-badge"><i class="ri-movie-line"></i> Trailer</span><span class="proj-media-play proj-media-replay" role="button" tabindex="0" aria-label="Replay trailer"><i class="ri-restart-line"></i></span>`
+					? `<video class="proj-hero" muted playsinline preload="none" data-src="${cfg.video}" data-poster="${cfg.hero}"></video><span class="proj-media-badge"><i class="ri-movie-line"></i> Trailer</span><span class="proj-media-play proj-media-replay" role="button" tabindex="0" aria-label="Replay trailer"><i class="ri-restart-line"></i></span>`
 
 					: `<img class="proj-hero" src="${cfg.hero}" alt="${cfg.title}" loading="lazy" decoding="async"><span class="proj-media-play"><i class="ri-play-fill"></i></span>`}
 
@@ -4271,7 +4271,13 @@ function initProjectLevel(levelEl) {
 
 				if (entry.isIntersecting) {
 
-					if (!video.src) video.src = video.dataset.src;
+					if (!video.src) {
+
+						if (video.dataset.poster && !video.getAttribute('poster')) video.setAttribute('poster', video.dataset.poster);
+
+						video.src = video.dataset.src;
+
+					}
 
 					if (!video.ended) video.play().catch(() => {});
 
