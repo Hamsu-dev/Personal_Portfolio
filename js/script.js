@@ -2469,9 +2469,13 @@ function makeClutterNoteDraggable(note, container, noteId, onTap) {
 
 	if (!note) return;
 
-	const storageKey = `sam-os-note-pos:${noteId}`;
+	const isPhone = window.matchMedia('(max-width: 600px)').matches;
 
-	const saved = window.matchMedia('(max-width: 600px)').matches ? null : localStorage.getItem(storageKey);
+	// Phones use a separate key so a moved note persists on mobile without
+	// inheriting desktop coordinates that could land off-screen on a small viewport.
+	const storageKey = `sam-os-note-pos:${noteId}${isPhone ? ':m' : ''}`;
+
+	const saved = localStorage.getItem(storageKey);
 
 	if (saved) {
 
@@ -2479,7 +2483,15 @@ function makeClutterNoteDraggable(note, container, noteId, onTap) {
 
 			const { left, top } = JSON.parse(saved);
 
-			if (Number.isFinite(left) && Number.isFinite(top)) applyClutterNotePosition(note, left, top);
+			if (Number.isFinite(left) && Number.isFinite(top)) {
+
+				// Clamp restored coordinates so the note is always reachable, even
+				// if the viewport size or orientation changed since it was saved.
+				const { x, y } = clampClutterNotePosition(note, container, left, top);
+
+				applyClutterNotePosition(note, x, y);
+
+			}
 
 		} catch {
 
@@ -3150,7 +3162,7 @@ function openAboutWindow() {
 
 			<div class="studio-about-row">
 
-				<img class="studio-about-photo" src="img/sam_hero.jpg" alt="Sam Hu">
+				<img class="studio-about-photo" src="img/sam_avatar.jpg" alt="Sam Hu" width="96" height="96" decoding="async">
 
 				<div class="studio-about-info">
 
@@ -3242,7 +3254,7 @@ function openProjectsWindow() {
 
 						<button type="button" class="studio-projects-item" data-title="${g.title.replace(/"/g, '&quot;')}">
 
-							<img src="${g.imgSrc}" alt="">
+							<img src="${g.imgSrc}" alt="" loading="lazy" decoding="async">
 
 							<div>
 
@@ -3388,7 +3400,7 @@ function initSearch() {
 
 			<button type="button" class="studio-search-item${i === 0 ? ' is-highlighted' : ''}" data-idx="${i}">
 
-				<img src="${g.imgSrc}" alt="">
+				<img src="${g.imgSrc}" alt="" loading="lazy" decoding="async">
 
 				<div><span>${g.title}</span><small>${g.engine} · ${g.metaLine.split('·').pop()?.trim() || ''}</small></div>
 
@@ -3632,7 +3644,7 @@ function renderLevelGamesPanel(panel, games, heading, blurb) {
 
 				<a class="studio-level-card" href="${g.href}" ${g.target ? `target="${g.target}" rel="noopener"` : ''}>
 
-					<img src="${g.imgSrc}" alt="${g.imgAlt || g.title}">
+					<img src="${g.imgSrc}" alt="${g.imgAlt || g.title}" loading="lazy" decoding="async">
 
 					<div>
 
@@ -3740,7 +3752,7 @@ function initConnectFinale(levelEl) {
 
 						<button type="button" class="studio-projects-item" data-title="${g.title.replace(/"/g, '&quot;')}">
 
-							<img src="${g.imgSrc}" alt="">
+							<img src="${g.imgSrc}" alt="" loading="lazy" decoding="async">
 
 							<div>
 
@@ -3808,7 +3820,7 @@ function initConnectFinale(levelEl) {
 
 					<div class="studio-window-body">
 
-						<img class="studio-about-photo" src="img/sam_hero.jpg" alt="Sam Hu">
+						<img class="studio-about-photo" src="img/sam_avatar.jpg" alt="Sam Hu" width="96" height="96" loading="lazy" decoding="async">
 
 						<div class="studio-finale-about-name">Sam Hu</div>
 
@@ -4133,7 +4145,7 @@ function initProjectLevel(levelEl) {
 
 					? `<video class="proj-hero" poster="${cfg.hero}" muted playsinline preload="none" data-src="${cfg.video}"></video><span class="proj-media-badge"><i class="ri-movie-line"></i> Trailer</span><span class="proj-media-play proj-media-replay" role="button" tabindex="0" aria-label="Replay trailer"><i class="ri-restart-line"></i></span>`
 
-					: `<img class="proj-hero" src="${cfg.hero}" alt="${cfg.title}"><span class="proj-media-play"><i class="ri-play-fill"></i></span>`}
+					: `<img class="proj-hero" src="${cfg.hero}" alt="${cfg.title}" loading="lazy" decoding="async"><span class="proj-media-play"><i class="ri-play-fill"></i></span>`}
 
 			</button>
 
@@ -5070,16 +5082,6 @@ function updateScrollProgress() {
 
 
 function optimizePerformance() {
-
-	['img/sam_hero.jpg', 'img/BossTwoHero.png', 'img/FairyForest.png'].forEach((src) => {
-
-		const img = new Image();
-
-		img.src = src;
-
-	});
-
-
 
 	let scrollTicking = false;
 

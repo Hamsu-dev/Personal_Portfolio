@@ -26,21 +26,23 @@
 	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
 	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/studio-os.css?v=studio172">
+	<link rel="stylesheet" type="text/css" href="css/studio-os.css?v=studio173">
 
-	<!---- box icons link ---->
-	<link rel="stylesheet"
-    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<!---- preconnect to asset CDNs ---->
+	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!---- remix icons link ---->
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-    rel="stylesheet"/>
+	<!---- remix icons (non-render-blocking) ---->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" media="print" onload="this.media='all'">
 
-    <!---- google fonts link ---->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<!---- google fonts (non-render-blocking) ---->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+
+	<noscript>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+	</noscript>
 </head>
 <body class="studio-theme studio-theme-scroll">
 
@@ -68,7 +70,7 @@
 			</div>
 
 			<div class="hero-img">
-				<img src="img/sam_hero.jpg">
+				<img src="img/sam_hero.jpg" loading="lazy" decoding="async">
 			</div>
 		</div>
 
@@ -91,7 +93,7 @@
 					<a href="https://hamsu-dev.itch.io/bosstwo" target="_blank" class="portfolio-game" data-play="games/boss-two/index.html?embed=1">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/BossTwoHero.png" alt="Boss Two — pixel art action boss fight">
+								<img src="img/BossTwoHero.png" alt="Boss Two — pixel art action boss fight" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -119,7 +121,7 @@
 					<a href="https://hamsu-dev.itch.io/unknown-caller" target="_blank" class="portfolio-game">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/UnknownCaller.png" alt="Unknown Caller — horror game prototype">
+								<img src="img/UnknownCaller.jpg" alt="Unknown Caller — horror game prototype" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -147,7 +149,7 @@
 					<a href="https://hamsu-dev.itch.io/flickeringhope" target="_blank" class="portfolio-game">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/FlickeringHopeHero.png" alt="Flickering Hope — two-player co-op Unreal prototype">
+								<img src="img/FlickeringHopeHero.jpg" alt="Flickering Hope — two-player co-op Unreal prototype" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -175,7 +177,7 @@
 					<a href="https://hamsu-dev.itch.io/recall" target="_blank" class="portfolio-game">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/RecallHero.png" alt="Recall — SFML puzzle speedrun platformer">
+								<img src="img/RecallHero.png" alt="Recall — SFML puzzle speedrun platformer" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -204,8 +206,8 @@
 					<a href="https://hamsu-dev.itch.io/angry-birds-at-home" target="_blank" class="portfolio-game">
 						<div class="game-card angry-birds-card">
 							<div class="game-image">
-								<img src="img/AngryBirdsHero.png" alt="Angry Birds At Home Game" class="angry-birds-main-img">
-								<img src="img/AngryBirdsGif.gif" alt="Angry Birds At Home Gameplay GIF" class="angry-birds-hover-gif" aria-hidden="true">
+								<img src="img/AngryBirdsHero.png" alt="Angry Birds At Home Game" class="angry-birds-main-img" loading="lazy" decoding="async">
+								<img src="img/AngryBirdsGif.gif" alt="Angry Birds At Home Gameplay GIF" class="angry-birds-hover-gif" aria-hidden="true" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -233,8 +235,8 @@
 					<a href="https://hamsu-dev.itch.io/fairy-forest" target="_blank" class="portfolio-game">
 						<div class="game-card fairy-forest-card">
 							<div class="game-image">
-								<img src="img/FairyForest.png" alt="Fairy Forest Game" class="fairy-forest-main-img">
-								<img src="img/FairyForesetGif.gif" alt="Fairy Forest Gameplay GIF" class="fairy-forest-hover-gif" aria-hidden="true">
+								<img src="img/FairyForest.jpg" alt="Fairy Forest Game" class="fairy-forest-main-img" loading="lazy" decoding="async">
+								<img src="img/FairyForesetGif.gif" alt="Fairy Forest Gameplay GIF" class="fairy-forest-hover-gif" aria-hidden="true" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -262,7 +264,7 @@
 					<a href="https://hamsu-dev.itch.io/whitch" target="_blank" class="portfolio-game">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/WhitchWay.png" alt="Whitch Way Game">
+								<img src="img/WhitchWay.png" alt="Whitch Way Game" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -290,7 +292,7 @@
 					<a href="https://hamsu-dev.itch.io/boss-one" target="_blank" class="portfolio-game">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/BossOne.png" alt="Boss One Game">
+								<img src="img/BossOne.png" alt="Boss One Game" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -318,7 +320,7 @@
 					<a href="https://hamsu-dev.itch.io/sock-for-sox" target="_blank" class="portfolio-game">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/RaccoonIcon.png" alt="Sneaky Soxs Game">
+								<img src="img/RaccoonIcon.png" alt="Sneaky Soxs Game" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -346,7 +348,7 @@
 					<a href="https://hamsu-dev.itch.io/the-frog-prince" target="_blank" class="portfolio-game">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/frogPrinceMenu.jpg" alt="The Frog Prince Game">
+								<img src="img/frogPrinceMenu.jpg" alt="The Frog Prince Game" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-play-circle-fill"></i>
 									<span>Play Now</span>
@@ -374,7 +376,7 @@
 					<a href="https://hamsu-dev.github.io/Personal_Portfolio/" target="_blank" class="portfolio-game">
 						<div class="game-card">
 							<div class="game-image">
-								<img src="img/HomeHero.png" alt="Personal portfolio website hero">
+								<img src="img/HomeHero.jpg" alt="Personal portfolio website hero" loading="lazy" decoding="async">
 								<div class="play-overlay">
 									<i class="ri-external-link-line"></i>
 									<span>Visit site</span>
@@ -457,9 +459,9 @@
 
 	<!-- ScrollReveal disabled for studio OS experience -->
 	<!--- js link --->
-		<script src="js/script.js?v=studio172"></script>
+		<script src="js/script.js?v=studio174" defer></script>
 	<!-- Interaction #1: Konami easter egg (remove script to disable) -->
-	<script src="js/interaction-01-konami.js"></script>
+	<script src="js/interaction-01-konami.js" defer></script>
 
 </body>
 </html>
