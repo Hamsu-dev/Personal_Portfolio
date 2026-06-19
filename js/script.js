@@ -2295,7 +2295,7 @@ function openGameWindow(game) {
 
 	win.style.transform = 'translateX(-50%)';
 
-	win.style.top = `${96 + offset}px`;
+	win.style.top = `${72 + offset}px`;
 
 	win.style.width = 'min(720px, calc(100vw - 24px))';
 
@@ -3120,68 +3120,6 @@ function spawnMascot(container, cfg, reduceMotion, targetH) {
 
 
 
-function openContactWindow() {
-
-	const id = 'contact';
-
-	if (StudioOS.windows.has(id)) {
-
-		showWindow(id);
-
-		return;
-
-	}
-
-
-
-	const win = document.createElement('div');
-
-	win.className = 'studio-window studio-contact-win';
-
-	win.dataset.id = id;
-
-	win.innerHTML = `
-
-		${buildTitlebarHtml('Contact.app')}
-
-		<div class="studio-window-body">
-
-			<h3>Reach out!</h3>
-
-			<p style="color:var(--other-color);font-size:14px;">Let's build something worth playing.</p>
-
-			<div class="social-row">
-
-				<a href="https://github.com/Hamsu-dev" target="_blank" rel="noopener"><i class="ri-github-line"></i></a>
-
-				<a href="https://www.instagram.com/s1_lui/" target="_blank" rel="noopener"><i class="ri-instagram-line"></i></a>
-
-				<a href="https://www.linkedin.com/in/sam-uoa/" target="_blank" rel="noopener"><i class="ri-linkedin-box-line"></i></a>
-
-			</div>
-
-		</div>
-
-	`;
-
-	win.style.left = '50%';
-
-	win.style.top = '96px';
-
-	win.style.transform = 'translateX(-50%)';
-
-	win.style.width = 'min(320px, calc(100vw - 48px))';
-
-
-
-	finalizeWindow(win, id, 'Contact');
-
-	pinTab(id);
-
-}
-
-
-
 function openAboutWindow() {
 
 	const id = 'about';
@@ -3236,13 +3174,27 @@ function openAboutWindow() {
 
 	`;
 
-	win.style.left = '28px';
+	if (window.matchMedia('(max-width: 600px)').matches) {
 
-	win.style.top = '88px';
+		win.style.left = '50%';
 
-	win.style.transform = 'none';
+		win.style.top = '210px';
 
-	win.style.width = 'min(340px, calc(100vw - 32px))';
+		win.style.transform = 'translateX(-50%)';
+
+		win.style.width = 'min(330px, calc(100vw - 28px))';
+
+	} else {
+
+		win.style.left = '28px';
+
+		win.style.top = '56px';
+
+		win.style.transform = 'none';
+
+		win.style.width = 'min(340px, calc(100vw - 32px))';
+
+	}
 
 
 
@@ -3346,7 +3298,7 @@ function openProjectsWindow() {
 
 	win.style.right = '104px';
 
-	win.style.top = '96px';
+	win.style.top = '72px';
 
 	win.style.transform = 'none';
 
@@ -3738,6 +3690,715 @@ function initStudioLevelLite(levelEl) {
 
 
 
+function initConnectFinale(levelEl) {
+
+	const portfolioContent = levelEl.querySelector('.portfolio-content');
+
+	if (!portfolioContent) return;
+
+	const wallpaper = levelEl.dataset.wallpaper || 'night';
+
+	const sections = (StudioOS.zones || [])
+
+		.map(
+
+			(z) => `
+
+		<div class="studio-projects-section">
+
+			<p class="studio-projects-label">${z.label}</p>
+
+			<ul class="studio-projects-list">
+
+				${z.games
+
+					.map(
+
+						(g) => `
+
+					<li>
+
+						<button type="button" class="studio-projects-item" data-title="${g.title.replace(/"/g, '&quot;')}">
+
+							<img src="${g.imgSrc}" alt="">
+
+							<div>
+
+								<span>${g.title}</span>
+
+								<small>${g.engine}</small>
+
+							</div>
+
+							<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+
+						</button>
+
+					</li>
+
+				`
+
+					)
+
+					.join('')}
+
+			</ul>
+
+		</div>
+
+	`
+
+		)
+
+		.join('');
+
+	const os = document.createElement('div');
+
+	os.className = 'studio-os studio-os--lite studio-os--finale';
+
+	os.innerHTML = `
+
+		<div class="studio-wallpaper" data-time="${wallpaper}" aria-hidden="true"></div>
+
+		<div class="studio-sky" aria-hidden="true">
+
+			<div class="sky-aurora"><div class="sky-aurora-glow"></div></div>
+
+			<div class="sky-stars sky-stars--far"></div>
+
+			<div class="sky-stars sky-stars--near"></div>
+
+		</div>
+
+		<div class="studio-finale">
+
+			<div class="studio-finale-head">
+
+				<h2 class="studio-finale-title">Let's make something.</h2>
+
+				<p class="studio-finale-sub">Thanks for stopping by — grab my CV, play a game, or say hi.</p>
+
+			</div>
+
+			<div class="studio-finale-apps">
+
+				<div class="studio-finale-win studio-about-win">
+
+					${buildTitlebarHtml('Sam.app')}
+
+					<div class="studio-window-body">
+
+						<img class="studio-about-photo" src="img/sam_hero.jpg" alt="Sam Hu">
+
+						<div class="studio-finale-about-name">Sam Hu</div>
+
+						<span class="studio-about-handle">@Hamsu-dev</span>
+
+						<div class="social-row">
+
+							<a href="https://github.com/Hamsu-dev" target="_blank" rel="noopener" aria-label="GitHub"><i class="ri-github-line"></i></a>
+
+							<a href="https://www.instagram.com/s1_lui/" target="_blank" rel="noopener" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+
+							<a href="https://www.linkedin.com/in/sam-uoa/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ri-linkedin-box-line"></i></a>
+
+						</div>
+
+						<a href="Assets/Sam_Hu_Resume.docx.pdf" class="studio-about-cv" download><i class="ri-download-line"></i> Download CV</a>
+
+					</div>
+
+				</div>
+
+				<div class="studio-finale-win studio-projects-win">
+
+					${buildTitlebarHtml('Projects.app')}
+
+					<div class="studio-window-body">
+
+						${sections}
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	`;
+
+	portfolioContent.replaceChildren(os);
+
+	initWallpaperTime(os);
+
+	os.querySelectorAll('.studio-projects-item').forEach((btn) => {
+
+		btn.addEventListener('click', () => {
+
+			const g = StudioOS.games.find((x) => x.title === btn.dataset.title);
+
+			if (g) openGameWindow(g);
+
+		});
+
+	});
+
+	const finale = os.querySelector('.studio-finale');
+
+	const io = new IntersectionObserver((entries) => {
+
+		entries.forEach((entry) => {
+
+			finale.classList.toggle('is-open', entry.isIntersecting);
+
+		});
+
+	}, { threshold: 0.2 });
+
+	io.observe(finale);
+
+}
+
+
+
+const PROJECT_PAGES = {
+
+	'boss-two': {
+
+		num: '02',
+
+		kicker: 'Featured Project',
+
+		title: 'Boss Two',
+
+		hero: 'img/BossTwoHero.png',
+
+		video: 'videos/boss-two-trailer.mp4',
+
+		hook: 'Read the pattern. Time the dodge. Topple the titan.',
+
+		facts: ['Unity', 'Boss Fight', 'Jun 2026'],
+
+		gameTitle: 'Boss Two',
+
+		playLabel: 'Play Boss Two',
+
+		itch: 'https://hamsu-dev.itch.io/bosstwo',
+
+		role: 'Solo project · Boss FSM & C# gameplay',
+
+		work: [
+
+			'Hit-confirmed combos — attack state only chains the next swing if the last one landed.',
+
+			'Intent dispatcher — Move and Idle poll for openings, then hand off to the matching state.',
+
+			'State machine core — Enter/Update/Exit lifecycle shared by every player and boss state.',
+
+		],
+
+		code: [
+
+			{
+
+				file: 'StateMachine.cs · core',
+
+				lang: 'C#',
+
+				caption: 'Tiny state machine: every transition runs Exit then Enter.',
+
+				snippet: `public class StateMachine
+{
+    public EntityState currentState { get; private set; }
+
+    public void Initialize(EntityState startState)
+    {
+        currentState = startState;
+        currentState.Enter();
+    }
+
+    // One transition path: exit the old, enter the new.
+    public void ChangeState(EntityState newState)
+    {
+        currentState.Exit();
+        currentState = newState;
+        currentState.Enter();
+    }
+
+    public void UpdateActiveState() => currentState.Update();
+}`,
+
+			},
+
+			{
+
+				file: 'Boss_AttackState.cs · combo',
+
+				lang: 'C#',
+
+				caption: 'Combo advances on animation events and only if a hit connected.',
+
+				snippet: `public override void Update()
+{
+    base.Update();
+
+    // Hit-confirm: chain mid-combo the instant a swing lands.
+    if (TryChainFromAttackOneHit())
+        return;
+
+    // Wait for the swing's animation event to resolve the step.
+    if (!triggeredCalled)
+        return;
+
+    triggeredCalled = false;
+
+    if (ShouldContinueCombo())
+    {
+        comboStep++;
+        BeginSwing();
+        return;
+    }
+
+    enemy.OnAttackSequenceEnded();
+    enemy.CompleteAttackAndTransition(stateMachine);
+}`,
+
+			},
+
+		],
+
+	},
+
+	'sneaky-soxs': {
+
+		num: '03',
+
+		kicker: 'Featured Project',
+
+		title: 'Sneaky Soxs',
+
+		hero: 'img/SneakySoxsHero.jpg',
+
+		video: 'videos/sneaky-soxs-trailer.mp4',
+
+		hook: 'Outsmart the guards. Crack the security. Pull off the heist.',
+
+		facts: ['Godot', '2D Stealth / Puzzle', 'Team Project'],
+
+		gameTitle: 'Sneaky Soxs',
+
+		playLabel: 'Play Sneaky Soxs',
+
+		itch: 'https://hamsu-dev.itch.io/sock-for-sox',
+
+		role: 'Team project · Player movement & gameplay programming',
+
+		work: [
+
+			'Player state machine — thirteen states share an Enter/Update/Exit lifecycle for idle, run, jump, dash and wall climb.',
+
+			'Forgiving jump feel — coyote time and jump buffering let slightly late or early presses still register cleanly.',
+
+			'Wall climbing — raycasts grab ledges and walls while a stamina budget limits how long you cling.',
+
+		],
+
+		code: [
+
+			{
+
+				file: 'player.gd · state machine',
+
+				lang: 'GDScript',
+
+				caption: 'Active state drives movement, and every transition runs Exit then Enter.',
+
+				snippet: `extends CharacterBody2D
+class_name PlayerController
+
+func _physics_process(delta):
+    GetInputStates()
+    UpdateRayCast()
+    PushObjects()
+    currentState.Update(delta)   # active state drives movement
+    move_and_slide()
+
+# A transition exits the old state, then enters the new one
+func ChangeState(nextState):
+    if nextState == null or currentState == nextState:
+        return
+    previousState = currentState
+    currentState.ExitState()
+    currentState = nextState
+    currentState.EnterState()`,
+
+			},
+
+			{
+
+				file: 'player.gd · jump feel',
+
+				lang: 'GDScript',
+
+				caption: 'Coyote time and a jump buffer keep jumps responsive near ledges.',
+
+				snippet: `# Walked off a ledge? Start coyote time, do not just fall
+func HandleFalling():
+    if not is_on_floor():
+        CoyoteTimer.start(CoyoteTime)
+        ChangeState(States.Fall)
+
+# Pressed jump a touch early? Buffer it for a few frames
+func HandleJumpBuffer():
+    if KeyJumpPressed and CoyoteTimer.time_left <= 0:
+        JumpBufferTimer.start(JumpBufferTime)
+
+func HandleJump():
+    if is_on_floor() and jumps < MaxJumps:
+        if KeyJumpPressed or JumpBufferTimer.time_left > 0:
+            JumpBufferTimer.stop()
+            jumps += 1
+            ChangeState(States.Jump)
+    elif CoyoteTimer.time_left > 0 and KeyJumpPressed:
+        CoyoteTimer.stop()
+        jumps += 1
+        ChangeState(States.Jump)`,
+
+			},
+
+		],
+
+	},
+
+};
+
+
+
+function initProjectLevel(levelEl) {
+
+	const portfolioContent = levelEl.querySelector('.portfolio-content');
+
+	if (!portfolioContent) return;
+
+	const cfg = PROJECT_PAGES[levelEl.dataset.project];
+
+	if (!cfg) { initStudioLevelLite(levelEl); return; }
+
+	const wallpaper = levelEl.dataset.wallpaper || 'night';
+
+	const os = document.createElement('div');
+
+	os.className = 'studio-os studio-os--lite studio-os--page studio-os--project';
+
+	os.innerHTML = `
+
+		<div class="studio-wallpaper" data-time="${wallpaper}" aria-hidden="true"></div>
+
+		<div class="studio-sky" aria-hidden="true">
+
+			<div class="sky-aurora"><div class="sky-aurora-glow"></div></div>
+
+			<div class="sky-stars sky-stars--far"></div>
+
+			<div class="sky-stars sky-stars--near"></div>
+
+		</div>
+
+		<div class="proj">
+
+			<button type="button" class="proj-media${cfg.video ? ' has-video' : ''}" aria-label="Play ${cfg.title}">
+
+				${cfg.video
+
+					? `<video class="proj-hero" poster="${cfg.hero}" muted playsinline preload="none" data-src="${cfg.video}"></video><span class="proj-media-badge"><i class="ri-movie-line"></i> Trailer</span><span class="proj-media-play proj-media-replay" role="button" tabindex="0" aria-label="Replay trailer"><i class="ri-restart-line"></i></span>`
+
+					: `<img class="proj-hero" src="${cfg.hero}" alt="${cfg.title}"><span class="proj-media-play"><i class="ri-play-fill"></i></span>`}
+
+			</button>
+
+			<div class="proj-info">
+
+				<p class="proj-kicker"><span>${cfg.num}</span> ${cfg.kicker}</p>
+
+				<h2 class="proj-title">${cfg.title}</h2>
+
+				<p class="proj-hook">${cfg.hook}</p>
+
+				<div class="proj-facts">${cfg.facts.map((f) => `<span>${f}</span>`).join('')}</div>
+
+				<div class="proj-cta">
+
+					<button type="button" class="proj-play"><i class="ri-play-fill"></i> ${cfg.playLabel || 'Play now'}</button>
+
+					<a class="proj-link" href="${cfg.itch}" target="_blank" rel="noopener">View on itch.io <i class="ri-external-link-line"></i></a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	`;
+
+	const deepHTML = buildProjectDeep(cfg);
+
+	if (deepHTML) os.insertAdjacentHTML('beforeend', deepHTML);
+
+	portfolioContent.replaceChildren(os);
+
+	initWallpaperTime(os);
+
+	const deep = os.querySelector('.proj-deep');
+
+	if (deep) {
+
+		deep.querySelectorAll('.proj-code-tab').forEach((tab) => {
+
+			tab.addEventListener('click', () => {
+
+				const i = tab.dataset.i;
+
+				deep.querySelectorAll('.proj-code-tab, .proj-code-pane, .proj-code-cap').forEach((el) => {
+
+					el.classList.toggle('is-active', el.dataset.i === i);
+
+				});
+
+			});
+
+		});
+
+		const revealIO = new IntersectionObserver((entries, obs) => {
+
+			entries.forEach((entry) => {
+
+				if (entry.isIntersecting) { deep.classList.add('is-in'); obs.disconnect(); }
+
+			});
+
+		}, { threshold: 0.16 });
+
+		revealIO.observe(deep);
+
+	}
+
+	const launch = () => {
+
+		if (cfg.gameTitle) {
+
+			const g = StudioOS.games.find((x) => x.title === cfg.gameTitle);
+
+			if (g) { openGameWindow(g); return; }
+
+		}
+
+		if (cfg.itch) window.open(cfg.itch, '_blank', 'noopener');
+
+	};
+
+	os.querySelector('.proj-play')?.addEventListener('click', launch);
+
+	os.querySelector('.proj-media')?.addEventListener('click', launch);
+
+	initProjectTilt(os.querySelector('.proj-media'));
+
+	const video = os.querySelector('video.proj-hero');
+
+	if (video) {
+
+		const media = os.querySelector('.proj-media');
+
+		const replay = os.querySelector('.proj-media-replay');
+
+		video.addEventListener('ended', () => media?.classList.add('is-ended'));
+
+		video.addEventListener('play', () => media?.classList.remove('is-ended'));
+
+		const doReplay = (e) => {
+
+			e.stopPropagation();
+
+			video.currentTime = 0;
+
+			video.play().catch(() => {});
+
+		};
+
+		replay?.addEventListener('click', doReplay);
+
+		replay?.addEventListener('keydown', (e) => {
+
+			if (e.key === 'Enter' || e.key === ' ') doReplay(e);
+
+		});
+
+		const io = new IntersectionObserver((entries) => {
+
+			entries.forEach((entry) => {
+
+				if (entry.isIntersecting) {
+
+					if (!video.src) video.src = video.dataset.src;
+
+					if (!video.ended) video.play().catch(() => {});
+
+				} else {
+
+					video.pause();
+
+				}
+
+			});
+
+		}, { threshold: 0.25 });
+
+		io.observe(video);
+
+	}
+
+}
+
+
+
+function highlightCode(src) {
+
+	const esc = src.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+	const kws = 'public|private|protected|internal|static|void|class|struct|enum|new|return|if|else|switch|case|default|break|continue|for|foreach|while|do|in|using|namespace|var|float|int|bool|string|double|true|false|null|this|base|override|virtual|abstract|const|readonly|get|set|out|ref|func|extends|class_name|and|or|not|elif|pass|self|signal|onready|export|match|await|yield';
+
+	const re = new RegExp(
+
+		'(\\/\\/[^\\n]*|#[^\\n]*)' +
+
+		'|("(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\')' +
+
+		'|(\\b\\d+(?:\\.\\d+)?f?\\b)' +
+
+		'|(\\b(?:' + kws + ')\\b)' +
+
+		'|(\\b[A-Z][A-Za-z0-9_]*\\b)',
+
+		'g');
+
+	const html = esc.replace(re, (m, com, str, num, kw, type) => {
+
+		if (com) return `<span class="tok-com">${com}</span>`;
+
+		if (str) return `<span class="tok-str">${str}</span>`;
+
+		if (num) return `<span class="tok-num">${num}</span>`;
+
+		if (kw) return `<span class="tok-kw">${kw}</span>`;
+
+		if (type) return `<span class="tok-type">${type}</span>`;
+
+		return m;
+
+	});
+
+	return html.split('\n').map((line) => `<span class="proj-code-line">${line || ' '}</span>`).join('');
+
+}
+
+
+
+function buildProjectDeep(cfg) {
+
+	const hasWork = Array.isArray(cfg.work) && cfg.work.length;
+
+	const hasCode = Array.isArray(cfg.code) && cfg.code.length;
+
+	if (!hasWork && !hasCode) return '';
+
+	const workCol = hasWork
+
+		? `<div class="proj-work">
+
+				<p class="proj-deep-kicker">What I worked on</p>
+
+				${cfg.role ? `<p class="proj-role">${cfg.role}</p>` : ''}
+
+				<ul class="proj-work-list">${cfg.work.map((w) => `<li>${w}</li>`).join('')}</ul>
+
+			</div>`
+
+		: '';
+
+	const codeCol = hasCode
+
+		? `<div class="proj-code-wrap">
+
+				<div class="proj-code">
+
+					<div class="proj-code-head">
+
+						<span class="proj-code-dots"><i></i><i></i><i></i></span>
+
+						<div class="proj-code-tabs">${cfg.code.map((c, i) => `<button type="button" class="proj-code-tab${i === 0 ? ' is-active' : ''}" data-i="${i}">${c.file}</button>`).join('')}</div>
+
+					</div>
+
+					<div class="proj-code-panes">${cfg.code.map((c, i) => `<div class="proj-code-pane${i === 0 ? ' is-active' : ''}" data-i="${i}"><pre class="proj-code-body"><code>${highlightCode(c.snippet)}</code></pre></div>`).join('')}</div>
+
+				</div>
+
+				${cfg.code.map((c, i) => `<p class="proj-code-cap${i === 0 ? ' is-active' : ''}" data-i="${i}">${c.caption || ''}</p>`).join('')}
+
+			</div>`
+
+		: '';
+
+	return `<section class="proj-deep"><div class="proj-deep-inner">${workCol}${codeCol}</div></section>`;
+
+}
+
+
+
+function initProjectTilt(media) {
+
+	if (!media) return;
+
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+	let raf = null, rx = 0, ry = 0;
+
+	const apply = () => {
+
+		raf = null;
+
+		media.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+
+	};
+
+	media.addEventListener('pointermove', (e) => {
+
+		const r = media.getBoundingClientRect();
+
+		const px = (e.clientX - r.left) / r.width - 0.5;
+
+		const py = (e.clientY - r.top) / r.height - 0.5;
+
+		ry = px * 10;
+
+		rx = -py * 10;
+
+		if (!raf) raf = requestAnimationFrame(apply);
+
+	});
+
+	media.addEventListener('pointerleave', () => {
+
+		rx = 0; ry = 0;
+
+		if (!raf) raf = requestAnimationFrame(apply);
+
+	});
+
+}
+
+
+
 function initLevelScrollBlend() {
 
 	const levels = [...document.querySelectorAll('.studio-level')];
@@ -3877,128 +4538,6 @@ function initStudioLevelRail() {
 		rail.querySelector(`[data-level-target="${levels[0].id}"]`)?.classList.add('is-active');
 
 	}
-
-}
-
-
-
-function initMenuBar() {
-
-	if (document.querySelector('.studio-menubar')) return;
-
-	const bar = document.createElement('div');
-
-	bar.className = 'studio-menubar';
-
-	bar.innerHTML = `
-
-		<div class="studio-menubar-left">
-
-			<button type="button" class="studio-menu-logo" aria-haspopup="true" aria-expanded="false"><i class="ri-terminal-box-fill"></i> SamOS</button>
-
-			<span class="studio-menu-app">Desktop</span>
-
-		</div>
-
-		<div class="studio-menubar-right">
-
-			<i class="ri-wifi-line" aria-hidden="true"></i>
-
-			<i class="ri-battery-2-fill" aria-hidden="true"></i>
-
-			<span class="studio-menu-clock"></span>
-
-		</div>
-
-		<div class="studio-menu-dropdown" role="menu" hidden>
-
-			<button type="button" role="menuitem" data-act="about">About SamOS</button>
-
-			<div class="studio-menu-sep"></div>
-
-			<button type="button" role="menuitem" data-act="projects">Browse Projects</button>
-
-			<button type="button" role="menuitem" data-act="contact">Contact</button>
-
-			<div class="studio-menu-sep"></div>
-
-			<button type="button" role="menuitem" data-act="cv">Download CV</button>
-
-		</div>
-
-	`;
-
-	document.body.appendChild(bar);
-
-	StudioOS.els.menubar = bar;
-
-	const logo = bar.querySelector('.studio-menu-logo');
-
-	const dropdown = bar.querySelector('.studio-menu-dropdown');
-
-	const closeMenu = () => { dropdown.hidden = true; logo.setAttribute('aria-expanded', 'false'); logo.classList.remove('is-open'); };
-
-	const openMenu = () => { dropdown.hidden = false; logo.setAttribute('aria-expanded', 'true'); logo.classList.add('is-open'); };
-
-	logo.addEventListener('click', (e) => { e.stopPropagation(); dropdown.hidden ? openMenu() : closeMenu(); });
-
-	document.addEventListener('click', (e) => { if (!bar.contains(e.target)) closeMenu(); });
-
-	window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
-
-	dropdown.addEventListener('click', (e) => {
-
-		const btn = e.target.closest('[data-act]');
-
-		if (!btn) return;
-
-		closeMenu();
-
-		const act = btn.dataset.act;
-
-		if (act === 'about') openAboutWindow();
-
-		else if (act === 'projects') openProjectsWindow();
-
-		else if (act === 'contact') openContactWindow();
-
-		else if (act === 'cv') {
-
-			const a = document.createElement('a');
-
-			a.href = 'Assets/Sam_Hu_Resume.docx.pdf';
-
-			a.download = '';
-
-			document.body.appendChild(a);
-
-			a.click();
-
-			a.remove();
-
-		}
-
-	});
-
-	const clock = bar.querySelector('.studio-menu-clock');
-
-	const tick = () => {
-
-		const now = new Date();
-
-		const day = now.toLocaleDateString([], { weekday: 'short' });
-
-		const time = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-
-		clock.textContent = `${day}  ${time}`;
-
-	};
-
-	tick();
-
-	if (StudioOS.menubarTimer) clearInterval(StudioOS.menubarTimer);
-
-	StudioOS.menubarTimer = setInterval(tick, 15000);
 
 }
 
@@ -4148,24 +4687,6 @@ function initStudioChrome() {
 
 	dock.appendChild(cvDock);
 
-	const contactDock = document.createElement('button');
-
-	contactDock.type = 'button';
-
-	contactDock.className = 'studio-dock-item studio-dock-app';
-
-	contactDock.dataset.appId = 'contact';
-
-	contactDock.setAttribute('data-tip', 'Contact & socials');
-
-	contactDock.setAttribute('aria-label', 'Contact and socials');
-
-	contactDock.innerHTML = '<i class="ri-mail-line"></i>';
-
-	contactDock.addEventListener('click', () => toggleDockApp('contact', openContactWindow));
-
-	dock.appendChild(contactDock);
-
 	const itchDock = document.createElement('a');
 
 	itchDock.className = 'studio-dock-item studio-dock-app';
@@ -4225,6 +4746,10 @@ function initStudioWorld() {
 	levels.forEach((levelEl, index) => {
 
 		if (index === 0) initStudioOS(levelEl);
+
+		else if (levelEl.dataset.project) initProjectLevel(levelEl);
+
+		else if (levelEl.dataset.levelKind === 'connect') initConnectFinale(levelEl);
 
 		else initStudioLevelLite(levelEl);
 
