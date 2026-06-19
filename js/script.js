@@ -2289,13 +2289,15 @@ function openGameWindow(game) {
 
 
 
-	const offset = StudioOS.windows.size * 20;
+	const isPhone = window.matchMedia('(max-width: 600px)').matches;
+
+	const offset = isPhone ? 0 : StudioOS.windows.size * 20;
 
 	win.style.left = `calc(50% + ${offset}px)`;
 
 	win.style.transform = 'translateX(-50%)';
 
-	win.style.top = `${72 + offset}px`;
+	win.style.top = `${(isPhone ? 64 : 72) + offset}px`;
 
 	win.style.width = 'min(720px, calc(100vw - 24px))';
 
@@ -2469,7 +2471,7 @@ function makeClutterNoteDraggable(note, container, noteId, onTap) {
 
 	const storageKey = `sam-os-note-pos:${noteId}`;
 
-	const saved = localStorage.getItem(storageKey);
+	const saved = window.matchMedia('(max-width: 600px)').matches ? null : localStorage.getItem(storageKey);
 
 	if (saved) {
 
@@ -3294,17 +3296,35 @@ function openProjectsWindow() {
 
 
 
-	win.style.left = 'auto';
+	if (window.matchMedia('(max-width: 600px)').matches) {
 
-	win.style.right = '104px';
+		win.style.left = '50%';
 
-	win.style.top = '72px';
+		win.style.right = 'auto';
 
-	win.style.transform = 'none';
+		win.style.top = '84px';
 
-	win.style.width = 'min(340px, calc(100vw - 144px))';
+		win.style.transform = 'translateX(-50%)';
 
-	win.style.maxHeight = 'min(72vh, 560px)';
+		win.style.width = 'min(360px, calc(100vw - 24px))';
+
+		win.style.maxHeight = 'min(64vh, 460px)';
+
+	} else {
+
+		win.style.left = 'auto';
+
+		win.style.right = '104px';
+
+		win.style.top = '72px';
+
+		win.style.transform = 'none';
+
+		win.style.width = 'min(340px, calc(100vw - 144px))';
+
+		win.style.maxHeight = 'min(72vh, 560px)';
+
+	}
 
 
 
@@ -5019,7 +5039,11 @@ function initStudioOS(levelEl) {
 
 	initSearch();
 
-	setTimeout(() => openAboutWindow(), 300);
+	if (!window.matchMedia('(max-width: 600px)').matches) {
+
+		setTimeout(() => openAboutWindow(), 300);
+
+	}
 
 	setTimeout(syncHudToDock, 400);
 

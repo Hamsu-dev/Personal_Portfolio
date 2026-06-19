@@ -3636,3 +3636,116 @@ html.studio-theme-scroll.is-level-navigating {
 		animation: none;
 	}
 }
+
+/* ───────────────────────────────────────────────
+   Phone optimisation (<= 600px)
+   ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+	html.studio-theme-scroll,
+	body.studio-theme {
+		overflow-x: hidden;
+	}
+
+	/* Hero headline pinned near the top; the Sam.app window is moved
+	   below it via JS so it no longer covers the headline. */
+	.studio-hero {
+		top: 5%;
+		gap: 8px;
+		padding: 0 18px;
+	}
+
+	.studio-hero-title {
+		font-size: clamp(46px, 15vw, 96px);
+	}
+
+	/* "click me" arrow is desktop clutter — hide on phones */
+	.studio-clutter-hint {
+		display: none;
+	}
+
+	/* Sticky-note CTAs fill the middle of the hero, side by side,
+	   shifted left so they clear the side rail. */
+	.studio-clutter-note--pink,
+	.studio-clutter-note--mint {
+		width: min(148px, 42vw);
+		font-size: 11px;
+		padding: 12px 13px;
+	}
+
+	.studio-clutter-note--pink {
+		top: 47%;
+		left: 21%;
+	}
+
+	.studio-clutter-note--mint {
+		top: 47%;
+		left: 64%;
+	}
+
+	/* Finale: compact, stacked windows */
+	.studio-finale {
+		padding: 84px 16px 140px;
+		gap: 22px;
+	}
+
+	.studio-finale-title {
+		font-size: clamp(34px, 12vw, 84px);
+	}
+
+	.studio-finale-sub {
+		font-size: 14px;
+	}
+
+	.studio-finale-win,
+	.studio-finale-win.studio-about-win {
+		width: min(360px, calc(100vw - 26px));
+	}
+
+	.studio-finale-win.studio-projects-win {
+		max-height: 320px;
+	}
+
+	/* Project pages — tighter gutters */
+	.studio-os--project .proj {
+		padding: 80px 18px 138px;
+	}
+
+	.proj-deep {
+		padding: 0 18px 138px;
+	}
+
+	.proj-title {
+		font-size: clamp(40px, 13vw, 68px);
+	}
+
+	/* Dock fits narrow screens */
+	.studio-dock {
+		bottom: 14px;
+		gap: 4px;
+		padding: 8px 10px;
+	}
+
+	/* Page indicators (01–04) stay as a slim vertical rail on the side */
+	.studio-level-rail {
+		top: 50%;
+		bottom: auto;
+		left: auto;
+		right: 8px;
+		transform: translateY(-50%);
+		flex-direction: column;
+		gap: 4px;
+		padding: 5px;
+	}
+}
+
+@media (max-width: 380px) {
+	.studio-dock {
+		gap: 3px;
+		padding: 7px 8px;
+	}
+
+	.studio-dock-item {
+		width: 40px;
+		height: 40px;
+	}
+}
