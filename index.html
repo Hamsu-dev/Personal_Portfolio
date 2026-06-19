@@ -26,6 +26,7 @@
 	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
 	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/studio-os.css?v=studio145">
 
 	<!---- box icons link ---->
 	<link rel="stylesheet"
@@ -39,27 +40,11 @@
     <!---- google fonts link ---->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="studio-theme studio-theme-scroll">
 
-	<!--- header --->
-	<header>
-		<a href="#" class="logo">Sam Hu</a>
-
-		<ul class="navlist">
-			<li><a href="#home">Home</a></li>
-			<li><a href="#portfolio">Portfolio</a></li>
-			<li><a href="#contact">Contact</a></li>
-		</ul>
-
-		<div class="nav-right">
-			<a href="thefrogprince.html" class="nav-btn" target="_blank">HHB STUDIO</a>
-			<div class="bx bx-menu" id="menu-icon"></div>
-		</div>		
-	</header>
-
-	<!--- hero --->
+	<!--- hero (hidden via CSS, kept for SEO data) --->
 	<section class="hero" id="home">
 		<!-- Particle Background -->
 		<div id="particles-js"></div>
@@ -88,25 +73,22 @@
 		</div>
 
 		<div class="scroll">
-			<a href="#portfolio"><i class="ri-scroll-to-bottom-fill"></i>Scroll Bottom</a>
+			<a href="#level-studio"><i class="ri-arrow-down-line"></i> Power on studio</a>
 		</div>
 	</section>
 
 
 
 
-	<!--- portfolio --->
-	<section class="portfolio" id="portfolio">
-		<div class="mid-text">
-			<h2>PORTFOLIO</h2>
-		</div>
+	<!--- scrollable SamOS levels --->
+	<main class="studio-world" id="studio-world">
 
-		<div class="portfolio-content">
-			<!-- Recent Games -->
+		<section class="studio-level" id="level-studio" data-wallpaper="day" data-level-num="01" data-level-title="Studio">
+			<div class="portfolio-content">
 			<div class="portfolio-section">
 				<h3 class="section-title">Recent Releases</h3>
 				<div class="games-grid">
-					<a href="https://hamsu-dev.itch.io/bosstwo" target="_blank" class="portfolio-game">
+					<a href="https://hamsu-dev.itch.io/bosstwo" target="_blank" class="portfolio-game" data-play="games/boss-two/index.html?embed=1">
 						<div class="game-card">
 							<div class="game-image">
 								<img src="img/BossTwoHero.png" alt="Boss Two — pixel art action boss fight">
@@ -418,99 +400,18 @@
 					</a>
 				</div>
 			</div>
-
-			<!-- Previous Games -->
-			<div class="portfolio-section">
-				<h3 class="section-title">Previous Projects</h3>
-				<div class="games-grid">
-					<a href="https://hamsu-dev.itch.io/memento-marine" target="_blank" class="portfolio-game">
-						<div class="game-card">
-							<div class="game-image">
-								<img src="img/Memento_Marine.jpg" alt="Memento Marine">
-								<div class="play-overlay">
-									<i class="ri-play-circle-fill"></i>
-									<span>Play Now</span>
-								</div>
-							</div>
-							<div class="game-details">
-								<h4>Memento Marine</h4>
-								<p>Narrative-driven game with design excellence award from UOA GDG. A collaborative project showcasing storytelling in games.</p>
-								<div class="game-tags">
-									<span class="tag">Narrative</span>
-									<span class="tag">Award Winner</span>
-									<span class="tag">Collaboration</span>
-								</div>
-								<div class="blog-content">
-									<div class="blog-post">
-										<h5>Award-Winning Narrative</h5>
-										<p>This project won the Narrative & Design Excellence award at UOA GDG. The collaborative process taught me the importance of clear communication in game development.</p>
-										<span class="blog-date">Aug 2024</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-
-					<a href="https://hamsu-dev.itch.io/last-musical-chair" target="_blank" class="portfolio-game">
-						<div class="game-card">
-							<div class="game-image">
-								<img src="img/Last Musical Chair.png" alt="Last Musical Chair">
-								<div class="play-overlay">
-									<i class="ri-play-circle-fill"></i>
-									<span>Play Now</span>
-								</div>
-							</div>
-							<div class="game-details">
-								<h4>Last Musical Chair</h4>
-								<p>GameDev.tv Game Jam 2024 entry. A creative take on the classic musical chairs game with unique mechanics and engaging gameplay.</p>
-								<div class="game-tags">
-									<span class="tag">Game Jam</span>
-									<span class="tag">Creative</span>
-									<span class="tag">Godot</span>
-								</div>
-								<div class="blog-content">
-									<div class="blog-post">
-										<h5>Game Jam Learning</h5>
-										<p>Participating in GameDev.tv Game Jam 2024 taught me rapid iteration and creative problem-solving under time constraints. The theme pushed me to think outside the box.</p>
-										<span class="blog-date">Dec 2024</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-
-					<a href="https://github.com/Hamsu-dev/Game_Review_Website" target="_blank" class="portfolio-game">
-						<div class="game-card">
-							<div class="game-image">
-								<img src="img/game_review_website.png" alt="University Web App Project">
-								<div class="play-overlay">
-									<i class="ri-code-line"></i>
-									<span>View Code</span>
-								</div>
-							</div>
-							<div class="game-details">
-								<h4>Game Review Website</h4>
-								<p>University web application project built with HTML, CSS, JavaScript, and Flask. A full-stack web development project showcasing modern web technologies.</p>
-								<div class="game-tags">
-									<span class="tag">Web Development</span>
-									<span class="tag">Flask</span>
-									<span class="tag">Full-Stack</span>
-								</div>
-								<div class="blog-content">
-									<div class="blog-post">
-										<h5>Full-Stack Development</h5>
-										<p>This university project taught me full-stack web development. Building both frontend and backend components gave me a comprehensive understanding of web technologies.</p>
-										<span class="blog-date">Jul 2024</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
 			</div>
-		</div>
+		</section>
 
-	</section>
+		<section class="studio-level" id="level-archive" data-wallpaper="dusk" data-level-num="02" data-level-title="Archive">
+			<div class="portfolio-content"></div>
+		</section>
+
+		<section class="studio-level" id="level-connect" data-wallpaper="night" data-level-num="03" data-level-title="Connect" data-level-kind="connect">
+			<div class="portfolio-content"></div>
+		</section>
+
+	</main>
 
 
 
@@ -550,11 +451,9 @@
 
 	<p class="konami-hint" aria-hidden="true">Hint: press ↑ ↑ ↓ ↓ ← → ← → then <kbd>B</kbd> <kbd>A</kbd> for a hidden achievement.</p>
 
-	<script src="https://unpkg.com/scrollreveal"></script>
-	<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
+	<!-- ScrollReveal disabled for studio OS experience -->
 	<!--- js link --->
-	<script src="js/script.js"></script>
+		<script src="js/script.js?v=studio145"></script>
 	<!-- Interaction #1: Konami easter egg (remove script to disable) -->
 	<script src="js/interaction-01-konami.js"></script>
 

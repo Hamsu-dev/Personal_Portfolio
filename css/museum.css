@@ -1,0 +1,532 @@
+/* Museum gallery walk */
+
+.museum-theme #particles-js {
+	display: none !important;
+}
+
+.museum-theme {
+	--bg-color: #ebe4d8;
+	--bg-elevated: #f7f3ec;
+	--bg-soft: #e3dcd0;
+	--text-color: #1c1917;
+	--main-color: #92400e;
+	--accent-color: #b45309;
+	--second-bg-color: #e3dcd0;
+	--other-color: #57534e;
+	--second-color: #d6cfc3;
+	--border-color: rgba(28, 25, 23, 0.12);
+	--card-shadow: 0 4px 20px rgba(28, 25, 23, 0.08);
+	--card-shadow-hover: 0 12px 40px rgba(28, 25, 23, 0.14);
+	--main-soft: rgba(146, 64, 14, 0.1);
+	--font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+	--font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--plaque-bg: #faf7f2;
+	--frame-wood: #3d2e1f;
+	--frame-gold: #c4a35a;
+}
+
+.museum-theme header {
+	background: rgba(247, 243, 236, 0.92);
+	border-bottom: 1px solid var(--border-color);
+}
+
+.museum-theme header.sticky {
+	background: rgba(247, 243, 236, 0.98);
+	box-shadow: 0 1px 0 var(--border-color);
+}
+
+.museum-theme .logo {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 1.35rem;
+	letter-spacing: 0.02em;
+}
+
+.museum-theme .navlist a:hover {
+	color: var(--main-color);
+}
+
+.museum-theme .nav-btn {
+	background: var(--frame-wood);
+	color: #faf7f2;
+	font-family: var(--font-body);
+	font-weight: 600;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.museum-theme .nav-btn:hover {
+	background: var(--main-color);
+}
+
+.museum-theme #menu-icon {
+	color: var(--text-color);
+}
+
+.museum-theme .hero {
+	background:
+		radial-gradient(ellipse 60% 50% at 50% 0%, rgba(196, 163, 90, 0.15), transparent),
+		var(--bg-elevated);
+}
+
+.museum-theme .hero-text h6 span {
+	color: var(--main-color);
+}
+
+.museum-theme .hero-text h1,
+.museum-theme .hero-text h4 {
+	font-family: var(--font-display);
+}
+
+.museum-theme .hero-img {
+	border: 8px solid var(--frame-wood);
+	box-shadow:
+		inset 0 0 0 2px var(--frame-gold),
+		var(--card-shadow);
+	border-radius: 2px;
+}
+
+.museum-theme .hero-img img {
+	border-radius: 0;
+}
+
+.museum-theme .btn {
+	background: var(--frame-wood);
+	border-radius: 2px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	font-size: 13px;
+}
+
+.museum-theme .btn:hover {
+	background: var(--main-color);
+}
+
+.museum-theme .btn2 {
+	color: var(--main-color);
+	font-weight: 600;
+}
+
+.museum-theme .scroll a {
+	font-family: var(--font-display);
+	font-size: 1.1rem;
+	font-style: italic;
+	color: var(--other-color);
+}
+
+.museum-theme .scroll a:hover {
+	color: var(--main-color);
+}
+
+.museum-theme .portfolio {
+	background: var(--bg-color);
+	position: relative;
+}
+
+.museum-theme .portfolio::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: repeating-linear-gradient(
+		90deg,
+		transparent,
+		transparent 119px,
+		rgba(28, 25, 23, 0.025) 119px,
+		rgba(28, 25, 23, 0.025) 120px
+	);
+	pointer-events: none;
+}
+
+.museum-entrance {
+	text-align: center;
+	padding: 2rem 1rem 3rem;
+	position: relative;
+	z-index: 1;
+}
+
+.museum-open {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	color: var(--main-color);
+	margin-bottom: 12px;
+}
+
+.museum-entrance h2 {
+	font-family: var(--font-display);
+	font-size: clamp(2.5rem, 6vw, 4rem);
+	font-weight: 700;
+	color: var(--text-color);
+	letter-spacing: 0.02em;
+	margin-bottom: 10px;
+}
+
+.museum-tagline {
+	font-family: var(--font-display);
+	font-size: 1.25rem;
+	font-style: italic;
+	color: var(--other-color);
+	max-width: 520px;
+	margin: 0 auto;
+}
+
+.museum-wing {
+	position: relative;
+	z-index: 1;
+	margin-bottom: 4rem;
+	padding-bottom: 3rem;
+	border-bottom: 3px double var(--border-color);
+}
+
+.museum-wing:last-child {
+	border-bottom: none;
+}
+
+.wing-sign {
+	display: flex;
+	align-items: baseline;
+	gap: 16px;
+	margin-bottom: 2rem;
+	padding: 16px 20px;
+	background: var(--frame-wood);
+	color: #faf7f2;
+	border-left: 4px solid var(--frame-gold);
+}
+
+.wing-number {
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	color: var(--frame-gold);
+	flex-shrink: 0;
+}
+
+.wing-sign h3 {
+	font-family: var(--font-display);
+	font-size: 1.75rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+}
+
+.museum-theme .section-title {
+	display: none;
+}
+
+.exhibit-hall {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 2.5rem 2rem;
+}
+
+.exhibit {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	transition: transform var(--transition-base);
+}
+
+.exhibit:hover,
+.exhibit.is-open {
+	transform: translateY(-4px);
+}
+
+.exhibit-frame {
+	position: relative;
+	background: var(--frame-wood);
+	padding: 10px 10px 14px;
+	box-shadow:
+		inset 0 0 0 2px var(--frame-gold),
+		var(--card-shadow);
+}
+
+.exhibit-frame::after {
+	content: '';
+	position: absolute;
+	top: -28px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 60%;
+	height: 40px;
+	background: radial-gradient(ellipse at center top, rgba(255, 248, 220, 0.35), transparent 70%);
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity var(--transition-base);
+}
+
+.exhibit:hover .exhibit-frame::after,
+.exhibit.is-open .exhibit-frame::after {
+	opacity: 1;
+}
+
+.exhibit-art-link {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 16 / 10;
+	background: #1c1917;
+}
+
+.exhibit-art,
+.exhibit-art-hover {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: opacity var(--transition-base), transform var(--transition-slow);
+}
+
+.exhibit-art-hover {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+}
+
+.exhibit.has-preview:hover .exhibit-art,
+.exhibit.has-preview.is-open .exhibit-art {
+	opacity: 0;
+}
+
+.exhibit.has-preview:hover .exhibit-art-hover,
+.exhibit.has-preview.is-open .exhibit-art-hover {
+	opacity: 1;
+}
+
+.exhibit:hover .exhibit-art:not(.exhibit-art-hover) {
+	transform: scale(1.03);
+}
+
+.exhibit-plaque {
+	background: var(--plaque-bg);
+	border: 1px solid var(--border-color);
+	border-top: none;
+	padding: 18px 20px 20px;
+	box-shadow: var(--card-shadow);
+	position: relative;
+}
+
+.exhibit-plaque::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 20px;
+	right: 20px;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--frame-gold), transparent);
+}
+
+.plaque-label {
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	color: var(--main-color);
+	margin-bottom: 6px;
+}
+
+.plaque-title {
+	font-family: var(--font-display);
+	font-size: 1.65rem;
+	font-weight: 700;
+	color: var(--text-color);
+	margin-bottom: 4px;
+	line-height: 1.15;
+}
+
+.plaque-meta {
+	font-size: 12px;
+	color: var(--other-color);
+	font-style: italic;
+	margin-bottom: 12px;
+}
+
+.plaque-detail {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows var(--transition-base);
+}
+
+.exhibit:hover .plaque-detail,
+.exhibit.is-open .plaque-detail {
+	grid-template-rows: 1fr;
+}
+
+.plaque-detail-inner {
+	overflow: hidden;
+	min-height: 0;
+}
+
+.plaque-desc {
+	font-size: 14px;
+	line-height: 1.65;
+	color: var(--other-color);
+	margin-bottom: 12px;
+	padding-top: 4px;
+}
+
+.plaque-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-bottom: 14px;
+}
+
+.plaque-tags .tag {
+	background: var(--bg-soft);
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
+	padding: 3px 10px;
+	border-radius: 2px;
+	font-size: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.plaque-curator {
+	border-left: 2px solid var(--frame-gold);
+	padding-left: 12px;
+	margin-bottom: 16px;
+}
+
+.curator-label {
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--main-color);
+	margin-bottom: 4px;
+}
+
+.plaque-curator .curator-headline {
+	font-family: var(--font-display);
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--text-color);
+	margin-bottom: 4px;
+}
+
+.plaque-curator .curator-text {
+	font-size: 13px;
+	line-height: 1.55;
+	color: var(--other-color);
+}
+
+.plaque-visit {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--frame-wood);
+	border-bottom: 1px solid var(--frame-gold);
+	padding-bottom: 2px;
+	transition: color var(--transition-fast), gap var(--transition-fast);
+}
+
+.plaque-visit:hover {
+	color: var(--main-color);
+	gap: 10px;
+}
+
+.museum-theme .contact {
+	background: var(--bg-elevated);
+	border-top: 3px double var(--border-color);
+}
+
+.museum-theme .contact-content h5 {
+	font-family: var(--font-display);
+	font-size: 1rem;
+	font-style: italic;
+	color: var(--main-color);
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.museum-theme .contact-content h3 {
+	font-family: var(--font-display);
+}
+
+.museum-theme .social-icon a {
+	background: var(--plaque-bg);
+	border: 1px solid var(--border-color);
+}
+
+.museum-theme .social-icon a:hover {
+	background: var(--frame-wood);
+	color: #faf7f2;
+}
+
+.museum-theme .footer {
+	background: var(--frame-wood);
+	color: #d6cfc3;
+	border-top: none;
+}
+
+.museum-theme .copyright p {
+	color: #a8a29e;
+}
+
+.museum-theme .scroll-top i {
+	background: var(--plaque-bg);
+	color: var(--frame-wood);
+	border: 1px solid var(--border-color);
+}
+
+.museum-theme .scroll-top:hover i {
+	background: var(--frame-gold);
+	color: var(--frame-wood);
+}
+
+.museum-theme .scroll-progress-bar {
+	background: linear-gradient(90deg, var(--frame-gold), var(--main-color));
+}
+
+.museum-theme .konami-hint {
+	color: var(--other-color);
+	opacity: 0.4;
+}
+
+.museum-theme .konami-hint kbd {
+	background: var(--plaque-bg);
+	border-color: var(--border-color);
+}
+
+@media (max-width: 1080px) {
+	.museum-theme .navlist {
+		background: var(--bg-elevated);
+	}
+}
+
+@media (max-width: 640px) {
+	.exhibit-hall {
+		grid-template-columns: 1fr;
+	}
+
+	.wing-sign {
+		flex-direction: column;
+		gap: 4px;
+	}
+}
+
+@media (hover: none) {
+	.exhibit .plaque-detail {
+		grid-template-rows: 0fr;
+	}
+
+	.exhibit.is-open .plaque-detail {
+		grid-template-rows: 1fr;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.exhibit,
+	.plaque-detail,
+	.exhibit-art {
+		transition: none;
+	}
+}
