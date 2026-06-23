@@ -3332,15 +3332,23 @@ function openProjectsWindow() {
 
 	} else {
 
+		// Park the window left of the level rail so they never overlap. The rail's
+		// width shifts across breakpoints, so measure it live instead of guessing.
+		const rail = document.querySelector('.studio-level-rail');
+		const railRect = rail?.getBoundingClientRect();
+		const rightOffset = railRect?.width
+			? Math.round(document.documentElement.clientWidth - railRect.left) + 20
+			: 130;
+
 		win.style.left = 'auto';
 
-		win.style.right = '104px';
+		win.style.right = `${rightOffset}px`;
 
 		win.style.top = '72px';
 
 		win.style.transform = 'none';
 
-		win.style.width = 'min(340px, calc(100vw - 144px))';
+		win.style.width = `min(340px, calc(100vw - ${rightOffset + 36}px))`;
 
 		win.style.maxHeight = 'min(72vh, 560px)';
 
