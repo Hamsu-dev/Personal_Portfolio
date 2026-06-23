@@ -1,5 +1,5 @@
 $root = $PSScriptRoot
-$port = 8080
+$port = if ($env:PORT) { [int]$env:PORT } else { 8080 }
 $mime = @{
     '.html' = 'text/html; charset=utf-8'
     '.css'  = 'text/css; charset=utf-8'

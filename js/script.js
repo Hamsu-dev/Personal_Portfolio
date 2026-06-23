@@ -2459,7 +2459,11 @@ function snapClutterNoteToPixels(note, container) {
 
 	const parentRect = container.getBoundingClientRect();
 
-	applyClutterNotePosition(note, rect.left - parentRect.left, rect.top - parentRect.top);
+	// Clamp the CSS-derived position so a note never starts off-screen on narrow
+	// viewports (e.g. the mint "play" CTA spilling past the right edge on phones).
+	const { x, y } = clampClutterNotePosition(note, container, rect.left - parentRect.left, rect.top - parentRect.top);
+
+	applyClutterNotePosition(note, x, y);
 
 }
 
@@ -2753,6 +2757,10 @@ const mascotClip = (strip, w, h, count, footPad, fps, id) => ({ strip, w, h, cou
 // Each roaming character links to one of Sam's games and opens it on click.
 
 function initMascot() {
+
+	// Dock buddies are a desktop-only flourish — skip them on phones so the
+	// sprite sheets never download and there's no per-frame work on mobile.
+	if (window.matchMedia('(max-width: 600px)').matches) return;
 
 	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

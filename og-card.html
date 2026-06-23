@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  .card {
+    position: relative;
+    width: 1200px; height: 630px;
+    background:
+      radial-gradient(70% 50% at 30% 20%, rgba(124,108,255,.20), rgba(0,0,0,0)),
+      radial-gradient(50% 40% at 80% 80%, rgba(94,234,212,.12), rgba(0,0,0,0)),
+      linear-gradient(160deg, #0f0f14 0%, #12121a 50%, #0a0a0e 100%);
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+  /* starfield */
+  .stars { position: absolute; inset: 0; }
+  .stars i {
+    position: absolute; width: 2px; height: 2px; border-radius: 50%;
+    background: #fff; opacity: .35;
+  }
+  .content { position: absolute; left: 84px; top: 150px; z-index: 3; }
+  .status {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 500;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(255,255,255,.62);
+    padding: 9px 16px; border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.10);
+  }
+  .status .dot { width: 9px; height: 9px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #4ade80; }
+  .title { font-size: 168px; font-weight: 700; line-height: 1.0; letter-spacing: -.02em; margin: 26px 0 0 -4px; }
+  .title .teal { color: #5eead4; }
+  .tagline {
+    font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 400;
+    color: rgba(255,255,255,.66); margin-top: 24px; letter-spacing: .01em;
+  }
+  .tagline b { color: #fff; font-weight: 500; }
+  .url {
+    position: absolute; left: 84px; bottom: 52px; z-index: 3;
+    font-family: "JetBrains Mono", monospace; font-size: 18px; letter-spacing: .04em;
+    color: rgba(255,255,255,.42);
+  }
+  /* sticky notes */
+  .note {
+    position: absolute; width: 256px; padding: 22px 24px 26px; z-index: 4;
+    border-radius: 16px; box-shadow: 0 22px 50px rgba(0,0,0,.45);
+  }
+  .note .lbl {
+    font-family: "JetBrains Mono", monospace; font-size: 14px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; opacity: .62; margin-bottom: 8px;
+  }
+  .note .txt { font-size: 25px; font-weight: 600; line-height: 1.2; }
+  .note.pink { right: 96px; top: 116px; transform: rotate(5deg);
+    background: linear-gradient(145deg, #ffd4e5, #ffb8d0); color: #5c2a3d; }
+  .note.mint { right: 150px; top: 312px; transform: rotate(-5deg);
+    background: linear-gradient(145deg, #c8f0e0, #a8e6cf); color: #1a3d32; }
+  /* dock */
+  .dock {
+    position: absolute; right: 44px; bottom: 38px; z-index: 5;
+    display: flex; gap: 12px; padding: 12px 14px; border-radius: 20px;
+    background: rgba(20,20,28,.72); border: 1px solid rgba(255,255,255,.08);
+  }
+  .dock span {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: rgba(255,255,255,.7);
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="stars" id="stars"></div>
+  <div class="content">
+    <div class="status"><span class="dot"></span>Available for work · Auckland, NZ</div>
+    <div class="title">Sam <span class="teal">Hu</span></div>
+    <div class="tagline">Game Developer · <b>making games worth playing</b></div>
+  </div>
+  <div class="url">hamsu-dev.github.io/Personal_Portfolio</div>
+
+  <div class="note pink"><div class="lbl">My Projects</div><div class="txt">Browse all my games →</div></div>
+  <div class="note mint"><div class="lbl">Play</div><div class="txt">Play my latest games →</div></div>
+
+  <div class="dock">
+    <span>♪</span><span>▣</span><span>☺</span><span>⬇</span><span>◉</span>
+  </div>
+</div>
+<script>
+  const s = document.getElementById('stars');
+  const seed = [[120,60],[260,420],[60,300],[420,120],[520,520],[700,80],[640,300],[880,520],[980,160],[1080,360],[1140,90],[340,560],[180,500],[760,560],[1010,480],[900,120],[460,360],[80,460],[1160,260],[600,440],[300,200],[520,260],[40,150],[700,200],[1120,540],[860,360],[260,90],[440,520],[160,180],[980,300]];
+  seed.forEach(([x,y]) => { const i=document.createElement('i'); i.style.left=x+'px'; i.style.top=y+'px'; if((x+y)%3===0){i.style.width='3px';i.style.height='3px';i.style.opacity='.5';} s.appendChild(i); });
+</script>
+</body>
+</html>

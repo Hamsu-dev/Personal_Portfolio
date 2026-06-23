@@ -3705,6 +3705,18 @@ html.studio-theme-scroll.is-level-navigating {
 		max-height: 320px;
 	}
 
+	/* Dock buddies (mascots) are desktop-only — hidden on phones.
+	   (Also skipped in JS so the sprite sheets never download.) */
+	.studio-mascot-wrap {
+		display: none !important;
+	}
+
+	/* Sam.app is hidden on phones; the finale shows just the Projects window.
+	   Its lazy-loaded avatar never downloads because the card has no layout box. */
+	.studio-finale-win.studio-about-win {
+		display: none;
+	}
+
 	/* Project pages — tighter gutters */
 	.studio-os--project .proj {
 		padding: 80px 18px 138px;
