@@ -362,85 +362,6 @@ function showAchievementToast(title, subtitle) {
 
 
 
-// Window action toasts — lightweight, stacking OS-style feedback when windows
-// open and close. Kept distinct from the rare achievement toast above.
-const StudioToasts = {
-	layer: null,
-	armed: false,
-	last: { key: '', t: 0 },
-
-	getLayer() {
-		if (this.layer && document.body.contains(this.layer)) return this.layer;
-		const el = document.createElement('div');
-		el.className = 'studio-toast-layer';
-		el.setAttribute('aria-live', 'polite');
-		document.body.appendChild(el);
-		this.layer = el;
-		return el;
-	},
-
-	push({ title, sub = '', icon = 'ri-window-2-line', accent = '#5eead4', duration = 2600 } = {}) {
-		// Stay silent until the desktop has finished booting so the windows that
-		// auto-open on load (Sam.app, pinned tabs) don't spawn a flurry of toasts.
-		if (!this.armed || !title) return;
-
-		const key = `${title}|${sub}`;
-		const now = performance.now();
-		if (key === this.last.key && now - this.last.t < 500) return;
-		this.last = { key, t: now };
-
-		const layer = this.getLayer();
-		const toast = document.createElement('div');
-		toast.className = 'studio-toast';
-		toast.setAttribute('role', 'status');
-		toast.style.setProperty('--toast-accent', accent);
-		toast.innerHTML =
-			`<span class="studio-toast-icon"><i class="${icon}" aria-hidden="true"></i></span>` +
-			`<span class="studio-toast-body"><span class="studio-toast-title"></span>` +
-			(sub ? '<span class="studio-toast-sub"></span>' : '') +
-			'</span>';
-		toast.querySelector('.studio-toast-title').textContent = title;
-		if (sub) toast.querySelector('.studio-toast-sub').textContent = sub;
-		layer.appendChild(toast);
-
-		// Never let more than three pile up.
-		while (layer.children.length > 3) this.dismiss(layer.firstElementChild);
-
-		// Commit the initial (hidden) state with a reflow, then reveal — more
-		// reliable than rAF, which can be throttled in a backgrounded tab.
-		void toast.offsetWidth;
-		toast.classList.add('is-in');
-
-		let timer = setTimeout(() => this.dismiss(toast), duration);
-		toast.addEventListener('mouseenter', () => clearTimeout(timer));
-		toast.addEventListener('mouseleave', () => { timer = setTimeout(() => this.dismiss(toast), 800); });
-		toast.addEventListener('click', () => { clearTimeout(timer); this.dismiss(toast); });
-	},
-
-	dismiss(toast) {
-		if (!toast || toast._closing) return;
-		toast._closing = true;
-		toast.classList.add('is-out');
-		toast.classList.remove('is-in');
-		const remove = () => toast.remove();
-		toast.addEventListener('transitionend', remove, { once: true });
-		setTimeout(remove, 500);
-	},
-};
-
-
-
-// Pick the toast badge icon + accent so it matches the app or game being acted on.
-function toastMetaForWindow(id, game) {
-	if (game) return { icon: 'ri-gamepad-line', accent: getGameAccent(game).color };
-	if (id === 'about') return { icon: 'ri-user-smile-line', accent: '#7c6cff' };
-	if (id === 'projects') return { icon: 'ri-folder-open-line', accent: '#ffb8d0' };
-	if (id === 'contact') return { icon: 'ri-mail-line', accent: '#5eead4' };
-	return { icon: 'ri-window-2-line', accent: '#5eead4' };
-}
-
-
-
 function expandPlayWindow(win) {
 
 	if (win.classList.contains('is-playing')) return;
@@ -1786,13 +1707,6 @@ function finalizeWindow(win, id, title, { game = null, container = null } = {}) 
 
 	updateDockAppState(id);
 
-	// Stash toast metadata so closeWindow can describe the window after it's gone.
-	const toastMeta = toastMetaForWindow(id, game);
-	win.dataset.toastTitle = title;
-	win.dataset.toastIcon = toastMeta.icon;
-	win.dataset.toastAccent = toastMeta.accent;
-	StudioToasts.push({ title, sub: 'Opened', icon: toastMeta.icon, accent: toastMeta.accent });
-
 }
 
 
@@ -1901,10 +1815,6 @@ function closeWindow(id) {
 
 	if (!win) return;
 
-	const toastTitle = win.dataset.toastTitle || '';
-	const toastIcon = win.dataset.toastIcon || 'ri-window-2-line';
-	const toastAccent = win.dataset.toastAccent || '#5eead4';
-
 	win.remove();
 
 	StudioOS.windows.delete(id);
@@ -1916,8 +1826,6 @@ function closeWindow(id) {
 	updateDockAppState(id);
 
 	if (StudioOS.focusedId === id) StudioOS.focusedId = null;
-
-	StudioToasts.push({ title: toastTitle, sub: 'Closed', icon: toastIcon, accent: toastAccent });
 
 }
 
@@ -5164,9 +5072,6 @@ function initStudioOS(levelEl) {
 	}
 
 	setTimeout(syncHudToDock, 400);
-
-	// Arm window toasts only after the load-time windows have settled.
-	setTimeout(() => { StudioToasts.armed = true; }, 1000);
 
 }
 
