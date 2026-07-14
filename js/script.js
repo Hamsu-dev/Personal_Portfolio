@@ -3190,7 +3190,7 @@ function openAboutWindow() {
 
 			</div>
 
-			<a href="Assets/Sam_Hu_Resume.docx.pdf" class="studio-about-cv" download><i class="ri-download-line"></i> Download CV</a>
+			<a href="Assets/Sam_Hu_Resume.pdf" class="studio-about-cv" download><i class="ri-download-line"></i> Download CV</a>
 
 		</div>
 
@@ -3710,7 +3710,7 @@ function renderLevelConnectPanel(panel) {
 
 		<div class="studio-level-actions">
 
-			<a class="is-primary" href="Assets/Sam_Hu_Resume.docx.pdf" download>Download CV</a>
+			<a class="is-primary" href="Assets/Sam_Hu_Resume.pdf" download>Download CV</a>
 
 			<a class="is-ghost" href="https://hamsu-dev.itch.io/" target="_blank" rel="noopener">Play on itch.io</a>
 
@@ -3852,7 +3852,7 @@ function initConnectFinale(levelEl) {
 
 						</div>
 
-						<a href="Assets/Sam_Hu_Resume.docx.pdf" class="studio-about-cv" download><i class="ri-download-line"></i> Download CV</a>
+						<a href="Assets/Sam_Hu_Resume.pdf" class="studio-about-cv" download><i class="ri-download-line"></i> Download CV</a>
 
 					</div>
 
@@ -4729,7 +4729,7 @@ function initStudioChrome() {
 
 	cvDock.className = 'studio-dock-item studio-dock-app';
 
-	cvDock.href = 'Assets/Sam_Hu_Resume.docx.pdf';
+	cvDock.href = 'Assets/Sam_Hu_Resume.pdf';
 
 	cvDock.download = '';
 
