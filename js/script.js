@@ -194,7 +194,7 @@ function getGameAccent(game) {
 
 		'Whitch Way': { color: '#a78bfa', glow: 'rgba(167, 139, 250, 0.4)' },
 
-		'Sneaky Soxs': { color: '#fb923c', glow: 'rgba(251, 146, 60, 0.4)' },
+		'Sneaky Sox': { color: '#fb923c', glow: 'rgba(251, 146, 60, 0.4)' },
 
 		'The Frog Prince': { color: '#34d399', glow: 'rgba(52, 211, 153, 0.4)' },
 
@@ -2826,9 +2826,9 @@ function initMascot() {
 
 		{
 
-			game: 'Sneaky Soxs',
+			game: 'Sneaky Sox',
 
-			label: 'Open Sneaky Soxs — Sox the raccoon puzzle heist',
+			label: 'Open Sneaky Sox — Sox the raccoon puzzle heist',
 
 			charH: 138,
 
@@ -4024,7 +4024,7 @@ const PROJECT_PAGES = {
 
 		kicker: 'Featured Project',
 
-		title: 'Sneaky Soxs',
+		title: 'Sneaky Sox',
 
 		hero: 'img/SneakySoxsHero.jpg',
 
@@ -4034,9 +4034,9 @@ const PROJECT_PAGES = {
 
 		facts: ['Godot', '2D Stealth / Puzzle', 'Team Project'],
 
-		gameTitle: 'Sneaky Soxs',
+		gameTitle: 'Sneaky Sox',
 
-		playLabel: 'Play Sneaky Soxs',
+		playLabel: 'Play Sneaky Sox',
 
 		itch: 'https://hamsu-dev.itch.io/sock-for-sox',
 
